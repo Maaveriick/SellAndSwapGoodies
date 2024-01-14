@@ -10,6 +10,7 @@ namespace SellAndSwapGoodies.Server.Configurations.Entities
 {
 	public class CategorySeedConfiguration : IEntityTypeConfiguration<Category>
 	{
+		//gg
 		public void Configure(EntityTypeBuilder<Category> builder)
 		{
 			builder.HasData(
