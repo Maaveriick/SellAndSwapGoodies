@@ -7,7 +7,7 @@ using SellAndSwapGoodies.Shared.Domain;
 
 namespace SellAndSwapGoodies.Shared.Domain
 {
-	public class Category:BaseDomainModel
+	public class Category : BaseDomainModel
 	{
 		public string? Name { get; set; }
 	}

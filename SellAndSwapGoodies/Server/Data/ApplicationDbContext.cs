@@ -1,6 +1,4 @@
-﻿using CarRentalManagement.Server.Configurations.Entities;
-using CarRentalManagement.Shared.Domain;
-using Duende.IdentityServer.EntityFramework.Options;
+﻿using Duende.IdentityServer.EntityFramework.Options;
 using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
@@ -29,7 +27,6 @@ namespace SellAndSwapGoodies.Server.Data
 		protected override void OnModelCreating(ModelBuilder builder)
 		{
 			base.OnModelCreating(builder);
-            builder.ApplyConfiguration(new UserSeedConfiguration());
             builder.ApplyConfiguration(new CategorySeedConfiguration());
 			builder.ApplyConfiguration(new RoleSeedConfiguration());
 			builder.ApplyConfiguration(new UserSeedConfiguration());
