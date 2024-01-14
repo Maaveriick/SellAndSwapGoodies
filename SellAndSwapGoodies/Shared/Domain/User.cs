@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using System.Runtime;
 
-namespace CarRentalManagement.Shared.Domain
+namespace SellAndSwapGoodies.Shared.Domain
 {
 	public class User : BaseDomainModel
 	{

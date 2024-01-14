@@ -4,7 +4,6 @@ using Humanizer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SellAndSwapGoodies.Server.Data;
-using SellAndSwapGoodies.Shared.Domain;
 
 namespace SellAndSwapGoodies.Server.Configurations.Entities
 {

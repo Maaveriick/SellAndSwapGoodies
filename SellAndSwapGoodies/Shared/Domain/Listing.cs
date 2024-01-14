@@ -3,7 +3,7 @@ using System.Reflection.Metadata.Ecma335;
 using System.Runtime.CompilerServices;
 using SellAndSwapGoodies.Shared.Domain;
 
-namespace CarRentalManagement.Shared.Domain
+namespace SellAndSwapGoodies.Shared.Domain
 {
 	public class Listing : BaseDomainModel
 	{
