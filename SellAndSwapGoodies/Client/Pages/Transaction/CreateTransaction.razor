@@ -1,0 +1,55 @@
+﻿@page "/transactions/create/"
+@inject HttpClient _client
+@inject NavigationManager _navManager
+<h3 class=" card.title"> Create New Transactions</h3>
+<hr />
+<br />
+<EditForm Model="@transaction" OnValidSubmit="CreateNewTransaction">
+	<DataAnnotationsValidator />
+	<ValidationSummary />
+	<div class="form-group">
+		<label> Name: </label>
+			<div>
+				<InputText @bind-Value="transaction.CreditCardName" class="form-control">
+					<ValidationMessage For="@(() => transaction.CreditCardName)" />
+				</InputText>
+			</div>
+	</div>
+	<div class="form-group">
+		<label> Expiry: </label>
+			<div>
+				<InputText @bind-Value="transaction.CreditCardExpiryName" class="form-control">
+				<ValidationMessage For="@(() => transaction.CreditCardExpiryName)" />
+				</InputText>
+			</div>
+	</div>
+	<div class="form-group">
+		<label> Number: </label>
+			<div>
+				<InputNumber @bind-Value="transaction.CreditCardNumber" class="form-control">
+				<ValidationMessage For="@(() => transaction.CreditCardNumber)" />
+				</InputNumber>
+			</div>
+	</div>
+
+	<button type="submit" class="btn btn-success btn-block">
+		Create Transaction
+	</button>
+</EditForm>
+
+@code {
+	Transaction transaction = new Transaction();
+
+	private IList<Transaction>? Transactions;
+
+	protected async override Task OnInitializedAsync()
+	{
+		Transactions = await _client.GetFromJsonAsync<List<Transaction>>($"{Endpoints.TransactionsEndpoint}");
+	}
+
+	private async Task CreateNewTransaction()
+	{
+		await _client.PostAsJsonAsync(Endpoints.TransactionsEndpoint, transaction);
+		_navManager.NavigateTo("/transactions");
+	}
+}

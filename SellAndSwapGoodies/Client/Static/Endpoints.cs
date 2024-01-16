@@ -1,6 +1,10 @@
-﻿namespace SellAndSwapGoodies.Client.Static.Endpoints
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+namespace SellAndSwapGoodies.Client.Static
 {
-    public class Endpoints
+    public static class Endpoints
     {
         private static readonly string Prefix = "api";
 

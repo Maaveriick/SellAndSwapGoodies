@@ -1,0 +1,40 @@
+﻿@page "/listings/create/"
+@inject HttpClient _client
+@inject NavigationManager _navManager
+<h3 class=" card.title"> Create New Listings</h3>
+<hr />
+<br />
+<EditForm Model="@listing" OnValidSubmit="CreateNewListing">
+	<DataAnnotationsValidator />
+	<ValidationSummary />
+	<div class="form-group">
+		<label> Name: </label>
+		<div>
+			<div>
+				<InputText @bind-Value="listing.Name" class="form-control">
+					<ValidationMessage For="@(() => listing.Name)" />
+				</InputText>
+			</div>
+		</div>
+	</div>
+	<button type="submit" class="btn btn-success btn-block">
+		Create Listing
+	</button>
+</EditForm>
+
+@code {
+	Listing listing = new Listing();
+
+	private IList<Listing>? Listings;
+
+	protected async override Task OnInitializedAsync()
+	{
+		Listings = await _client.GetFromJsonAsync<List<Listing>>($"{Endpoints.ListingsEndpoint}");
+	}
+
+	private async Task CreateNewListing()
+	{
+		await _client.PostAsJsonAsync(Endpoints.ListingsEndpoint, listing);
+		_navManager.NavigateTo("/listings");
+	}
+}

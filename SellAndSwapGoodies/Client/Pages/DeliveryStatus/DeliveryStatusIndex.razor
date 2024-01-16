@@ -1,0 +1,66 @@
+﻿@page "/deliverystatuses/"
+@inject HttpClient _client
+@inject IJSRuntime js
+@attribute [Authorize]
+
+<h3 class=" = " card_title">DeliveryStatuses</h3>"
+<br />
+<a href="/deliverystatuses/create" class="btn btn-secondary">
+    <span class="oi oi-plus"></span>
+    Create New DeliveryStatus
+</a>
+@if (DeliveryStatuses == null)
+{
+    <div class="alert alert-info">Loading DeliveryStatuses...</div>
+}
+else
+{
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var deliverystatus in DeliveryStatuses)
+            {
+                <tr>
+                    <td>@deliverystatus.Status</td>
+                    <td>
+                        <a href="deliverystatuses/view/@deliverystatus.Id" class="btn btn-primary">
+                            <span class="oi oi-book"></span>
+                        </a>
+                        <a href="deliverystatuses/edit/@deliverystatus.Id" class="btn btn-warning">
+                            <span class="oi oi-pencil"></span>
+                        </a>
+                        <button class="btn btn-danger" @onclick="@(()=>Delete(deliverystatus.Id))">
+                            <span class="oi oi-delete"></span>"
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+@code {
+    private List<DeliveryStatus>? DeliveryStatuses;
+
+    protected async override Task OnInitializedAsync()
+    {
+        DeliveryStatuses = await _client.GetFromJsonAsync<List<DeliveryStatus>>($"{Endpoints.DeliveryStatusesEndpoint}");
+    }
+
+    async Task Delete(int DeliveryStatusID)
+    {
+        if (DeliveryStatuses != null)
+        {
+            var deliverystatus = DeliveryStatuses.First(q => q.Id == DeliveryStatusID);
+            var confirm = await js.InvokeAsync<bool>("confirm", $"Do you want to delete {deliverystatus.Status}?");
+            if (confirm)
+            {
+                await _client.DeleteAsync($"{Endpoints.DeliveryStatusesEndpoint}/{DeliveryStatusID}");
+            }
+        }
+    }
+}

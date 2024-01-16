@@ -1,0 +1,40 @@
+﻿@page "/deliverystatuses/create/"
+@inject HttpClient _client
+@inject NavigationManager _navManager
+<h3 class=" card.title"> Create New DeliveryStatuses</h3>
+<hr />
+<br />
+<EditForm Model="@deliverystatus" OnValidSubmit="CreateNewDeliveryStatus">
+	<DataAnnotationsValidator />
+	<ValidationSummary />
+	<div class="form-group">
+		<label> Name: </label>
+		<div>
+			<div>
+				<InputText @bind-Value="deliverystatus.Status" class="form-control">
+					<ValidationMessage For="@(() => deliverystatus.Status)" />
+				</InputText>
+			</div>
+		</div>
+	</div>
+	<button type="submit" class="btn btn-success btn-block">
+		Create DeliveryStatus
+	</button>
+</EditForm>
+
+@code {
+	DeliveryStatus deliverystatus = new DeliveryStatus();
+
+	private IList<DeliveryStatus>? DeliveryStatuses;
+
+	protected async override Task OnInitializedAsync()
+	{
+		DeliveryStatuses = await _client.GetFromJsonAsync<List<DeliveryStatus>>($"{Endpoints.DeliveryStatusesEndpoint}");
+	}
+
+	private async Task CreateNewDeliveryStatus()
+	{
+		await _client.PostAsJsonAsync(Endpoints.DeliveryStatusesEndpoint, deliverystatus);
+		_navManager.NavigateTo("/deliverystatuses");
+	}
+}
