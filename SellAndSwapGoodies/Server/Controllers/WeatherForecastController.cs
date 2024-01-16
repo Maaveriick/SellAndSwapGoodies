@@ -4,7 +4,7 @@ using SellAndSwapGoodies.Shared;
 
 namespace SellAndSwapGoodies.Server.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [ApiController]
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase

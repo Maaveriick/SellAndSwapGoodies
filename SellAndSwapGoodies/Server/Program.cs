@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using SellAndSwapGoodies.Server.Data;
 using SellAndSwapGoodies.Server.Models;
 using Microsoft.AspNetCore.Identity;
+using SellAndSwapGoodies.Server.IRepository;
+using SellAndSwapGoodies.Server.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +23,8 @@ builder.Services.AddIdentityServer()
 
 builder.Services.AddAuthentication()
     .AddIdentityServerJwt();
+
+builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
