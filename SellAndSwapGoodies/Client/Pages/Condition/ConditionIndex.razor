@@ -1,0 +1,66 @@
+﻿@page "/conditions/"
+@inject HttpClient _client
+@inject IJSRuntime js
+@attribute [Authorize]
+
+<h3 class=" = " card_title">Condition</h3>"
+<br />
+<a href="/conditions/create" class="btn btn-secondary">
+    <span class="oi oi-plus"></span>
+    Create New Condition
+</a>
+@if (Conditions == null)
+{
+    <div class="alert alert-info">Loading Condition...</div>
+}
+else
+{
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var condition in Conditions)
+            {
+                <tr>
+                    <td>@condition.Name</td>
+                    <td>
+                        <a href="conditions/view/@condition.Id" class="btn btn-primary">
+                            <span class="oi oi-book"></span>
+                        </a>
+                        <a href="conditions/edit/@condition.Id" class="btn btn-warning">
+                            <span class="oi oi-pencil"></span>
+                        </a>
+                        <button class="btn btn-danger" @onclick="@(()=>Delete(condition.Id))">
+                            <span class="oi oi-delete"></span>"
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+@code {
+    private List<Condition>? Conditions;
+
+    protected async override Task OnInitializedAsync()
+    {
+        Conditions = await _client.GetFromJsonAsync<List<Condition>>($"{Endpoints.ConditionsEndpoint}");
+    }
+
+    async Task Delete(int Conditionid)
+    {
+        if (Conditions != null)
+        {
+            var condition = Conditions.First(q => q.Id == Conditionid);
+            var confirm = await js.InvokeAsync<bool>("confirm", $"Do you want to delete {condition.Name}?");
+            if (confirm)
+            {
+                await _client.DeleteAsync($"{Endpoints.ConditionsEndpoint}/{Conditionid}");
+            }
+        }
+    }
+}

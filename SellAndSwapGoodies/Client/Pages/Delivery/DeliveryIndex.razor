@@ -1,0 +1,75 @@
+﻿@page "/deliverys/"
+@inject HttpClient _client
+@inject IJSRuntime js
+@attribute [Authorize]
+
+<h3 class=" = " card_title">Delivery</h3>"
+<br />
+<a href="/deliverys/create" class="btn btn-secondary">
+    <span class="oi oi-plus"></span>
+    Create Delivery
+</a>
+@if (Deliverys == null)
+{
+    <div class="alert alert-info">Loading Delivery...</div>
+}
+else
+{
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>Buyer</th>
+                <th>Seller</th>
+                <th>Item</th>
+                <th>Location</th>
+                <th>Delivery Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var delivery in Deliverys)
+            {
+                <tr>
+                    <td>@delivery.User?.Name</td>
+                    <td>@delivery.Listing.User.Name</td>
+                    <td>@delivery.Listing.Name</td>
+                    <td>@delivery.Listing.Location</td>
+                    <td>@delivery.DeliveryStatus.Status</td>
+
+                    <td>
+                        <a href="deliverys/view/@delivery.Id" class="btn btn-primary">
+                            <span class="oi oi-book"></span>
+                        </a>
+                        <a href="deliverys/edit/@delivery.Id" class="btn btn-warning">
+                            <span class="oi oi-pencil"></span>
+                        </a>
+                        <button class="btn btn-danger" @onclick="@(()=>Delete(delivery.Id))">
+                            <span class="oi oi-delete"></span>"
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+@code {
+    private List<Delivery>? Deliverys;
+
+    protected async override Task OnInitializedAsync()
+    {
+        Deliverys = await _client.GetFromJsonAsync<List<Delivery>>($"{Endpoints.DeliverysEndpoint}");
+    }
+
+    async Task Delete(int DeliveryID)
+    {
+        if (Deliverys != null)
+        {
+            var delivery = Deliverys.First(q => q.Id == DeliveryID);
+            var confirm = await js.InvokeAsync<bool>("confirm", $"Do you want to delete?");
+            if (confirm)
+            {
+                await _client.DeleteAsync($"{Endpoints.DeliverysEndpoint}/{DeliveryID}");
+            }
+        }
+    }
+}

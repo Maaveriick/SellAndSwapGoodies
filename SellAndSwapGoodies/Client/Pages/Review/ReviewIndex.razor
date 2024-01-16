@@ -18,7 +18,9 @@ else
     <table class="table table-responsive">
         <thead>
             <tr>
-                <th>Name</th>
+                <th>User</th>
+                <th>Review</th>
+                <th>Rating</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -26,6 +28,8 @@ else
             @foreach (var review in Reviews)
             {
                 <tr>
+                    <td>@review.User?.Name</td>
+                    <td>@review.ReviewText</td>
                     <td>@review.Rating</td>
                     <td>
                         <a href="reviews/view/@review.Id" class="btn btn-primary">

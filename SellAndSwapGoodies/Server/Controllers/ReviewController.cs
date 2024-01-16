@@ -26,20 +26,15 @@ namespace SellAndSwapGoodies.Server.Controllers
 		[HttpGet]
 		public async Task<IActionResult> GetReview()
 		{
-			var reviews = await _unitOfWork.Reviews.GetAll();
-			//if (_context.Makes == null)
-			if (reviews == null)
-			{
-				return NotFound();
-			}
+			var Reviews = await _unitOfWork.Reviews.GetAll(includes: q => q.Include(x => x.User));
 			//return await _context.Makes.ToListAsync();
-			return Ok(reviews);
+			return Ok(Reviews);
 
 		}
 
 		// GET: api/Reviews/5
 		[HttpGet("{id}")]
-		public async Task<IActionResult> GetMake(int id)
+		public async Task<IActionResult> GetReview(int id)
 		{
 			var review = await _unitOfWork.Reviews.Get(q => q.Id == id);
 
@@ -109,8 +104,8 @@ namespace SellAndSwapGoodies.Server.Controllers
 			//    return NotFound();
 			//}
 			//var make = await _context.Makes.FindAsync(id);
-			var make = await _unitOfWork.Reviews.Get(q => q.Id == id);
-			if (make == null)
+			var review = await _unitOfWork.Reviews.Get(q => q.Id == id);
+			if (review == null)
 			{
 				return NotFound();
 			}

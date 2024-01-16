@@ -39,7 +39,7 @@ namespace SellAndSwapGoodies.Server.Controllers
 
 		// GET: api/Users/5
 		[HttpGet("{id}")]
-		public async Task<IActionResult> GetMake(int id)
+		public async Task<IActionResult> GetUser(int id)
 		{
 			var user = await _unitOfWork.Users.Get(q => q.Id == id);
 
@@ -109,8 +109,8 @@ namespace SellAndSwapGoodies.Server.Controllers
 			//    return NotFound();
 			//}
 			//var make = await _context.Makes.FindAsync(id);
-			var make = await _unitOfWork.Users.Get(q => q.Id == id);
-			if (make == null)
+			var user = await _unitOfWork.Users.Get(q => q.Id == id);
+			if (user	 == null)		
 			{
 				return NotFound();
 			}

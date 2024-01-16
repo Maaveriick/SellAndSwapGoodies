@@ -17,5 +17,7 @@ namespace SellAndSwapGoodies.Client.Static
         public static readonly string ReviewsEndpoint = $"{Prefix}/reviews";
         public static readonly string TransactionsEndpoint = $"{Prefix}/transactions";
         public static readonly string UsersEndpoint = $"{Prefix}/users";
-    }
+        public static readonly string ConditionsEndpoint = $"{Prefix}/conditions";
+		public static readonly string DeliverysEndpoint = $"{Prefix}/deliverys";
+	}
 }

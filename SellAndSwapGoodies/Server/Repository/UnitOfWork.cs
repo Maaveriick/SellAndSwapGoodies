@@ -26,6 +26,8 @@ namespace SellAndSwapGoodies.Server.Repository
 		private IGenericRepository<Review> _reviews;
 		private IGenericRepository<Transaction> _transactions;
 		private IGenericRepository<User> _users;
+		private IGenericRepository<Condition> _conditions;
+		private IGenericRepository<Delivery> _deliverys;
 
 		private UserManager<ApplicationUser> _userManager;
 
@@ -54,7 +56,12 @@ namespace SellAndSwapGoodies.Server.Repository
 		public IGenericRepository<User> Users
 			=> _users ??= new GenericRepository<User>(_context);
 
-		public void Dispose()
+		public IGenericRepository<Condition> Conditions
+			=> _conditions ??= new GenericRepository<Condition>(_context);
+        public IGenericRepository<Delivery> Deliverys
+            => _deliverys ??= new GenericRepository<Delivery>(_context);
+
+        public void Dispose()
 		{
 			_context.Dispose();
 			GC.SuppressFinalize(this);

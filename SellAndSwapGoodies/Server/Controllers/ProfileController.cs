@@ -39,7 +39,7 @@ namespace SellAndSwapGoodies.Server.Controllers
 
 		// GET: api/Profiles/5
 		[HttpGet("{id}")]
-		public async Task<IActionResult> GetMake(int id)
+		public async Task<IActionResult> GetProfile(int id)
 		{
 			var profile = await _unitOfWork.Profiles.Get(q => q.Id == id);
 
@@ -109,8 +109,8 @@ namespace SellAndSwapGoodies.Server.Controllers
 			//    return NotFound();
 			//}
 			//var make = await _context.Makes.FindAsync(id);
-			var make = await _unitOfWork.Profiles.Get(q => q.Id == id);
-			if (make == null)
+			var profile = await _unitOfWork.Profiles.Get(q => q.Id == id);
+			if (profile == null)
 			{
 				return NotFound();
 			}

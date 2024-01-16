@@ -1,0 +1,91 @@
+﻿@page "/deliverys/create/"
+@inject HttpClient _client
+@inject NavigationManager _navManager
+<h3 class=" card.title"> Create New Delivery</h3>
+<hr />
+<br />
+
+<EditForm Model="@delivery" OnValidSubmit="CreateNewDelivery" >
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group">
+        <label>Buyer:</label>
+        <div>
+            <InputSelect @bind-Value="delivery.UserID" class="form-control">
+                <option value="">-- Select Buyer --</option>
+                @if (Users != null)
+                {
+                    foreach (var user in Users)
+                    {
+                        <option value="@user.Id">@user.Name</option>
+                    }
+                }
+            </InputSelect>
+            <ValidationMessage For="@(() => delivery.UserID)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Delivery:</label>
+        <div>
+            <InputSelect @bind-Value="delivery.ListingID" class="form-control">
+                <option value=" ">-- Select Seller - Item - Location --</option>
+                @if (Listings != null)
+                {
+                    foreach (var listing in Listings)
+                    {
+                        <option value="@listing.Id">@listing?.User?.Name - @listing?.Name -- @listing?.Location</option>
+                    }
+                }
+            </InputSelect>
+            <ValidationMessage For="@(() => delivery.ListingID)" />
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <label>Delivery Status</label>
+        <div>
+            <InputSelect @bind-Value="delivery.DeliveryStatusID" class="form-control">
+                <option value=" ">-- Select Status --</option>
+                @if (DeliveryStatuses != null)
+                {
+                    foreach (var deliverystatus in DeliveryStatuses)
+                    {
+                        <option value="@deliverystatus.Id">@deliverystatus?.Status</option>
+                    }
+                }
+            </InputSelect>
+            <ValidationMessage For="@(() => delivery.DeliveryStatusID)" />
+        </div>
+        <button type="submit" class="btn btn-success btn-block">
+            Create Delivery
+        </button>
+    </div>
+
+
+</EditForm>
+
+@code {
+    Delivery delivery = new Delivery();
+
+    private IList<Delivery>? Deliverys;
+    private IList<Listing>? Listings;
+    private IList<DeliveryStatus>? DeliveryStatuses;
+    private IList<User>? Users;
+
+	protected async override Task OnInitializedAsync()
+	{
+		Deliverys = await _client.GetFromJsonAsync<List<Delivery>>($"{Endpoints.DeliverysEndpoint}");
+		Listings = await _client.GetFromJsonAsync<List<Listing>>($"{Endpoints.ListingsEndpoint}");
+        DeliveryStatuses = await _client.GetFromJsonAsync<List<DeliveryStatus>>($"{Endpoints.DeliveryStatusesEndpoint}");
+        Users = await _client.GetFromJsonAsync<List<User>>($"{Endpoints.UsersEndpoint}");
+	}
+
+	private async Task CreateNewDelivery()
+	{
+		await _client.PostAsJsonAsync(Endpoints.DeliverysEndpoint, delivery);
+		_navManager.NavigateTo("/deliverys");
+	}
+}

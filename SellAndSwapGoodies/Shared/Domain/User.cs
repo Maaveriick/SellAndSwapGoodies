@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using System.Runtime;
+using System.ComponentModel.DataAnnotations;
 
 namespace SellAndSwapGoodies.Shared.Domain
 {

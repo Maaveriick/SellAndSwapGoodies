@@ -39,7 +39,7 @@ namespace SellAndSwapGoodies.Server.Controllers
 
 		// GET: api/Chats/5
 		[HttpGet("{id}")]
-		public async Task<IActionResult> GetMake(int id)
+		public async Task<IActionResult> GetChat(int id)
 		{
 			var chat = await _unitOfWork.Chats.Get(q => q.Id == id);
 
@@ -109,8 +109,8 @@ namespace SellAndSwapGoodies.Server.Controllers
 			//    return NotFound();
 			//}
 			//var make = await _context.Makes.FindAsync(id);
-			var make = await _unitOfWork.Chats.Get(q => q.Id == id);
-			if (make == null)
+			var chat = await _unitOfWork.Chats.Get(q => q.Id == id);
+			if (chat == null)
 			{
 				return NotFound();
 			}

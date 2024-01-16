@@ -13,11 +13,11 @@ namespace SellAndSwapGoodies.Server.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CategoryController : ControllerBase
+    public class CategoriesController : ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork;
 
-        public CategoryController(IUnitOfWork unitOfWork)
+        public CategoriesController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
@@ -39,7 +39,7 @@ namespace SellAndSwapGoodies.Server.Controllers
 
         // GET: api/Categories/5
         [HttpGet("{id}")]
-		public async Task<IActionResult> GetMake(int id)
+		public async Task<IActionResult> GetCategory(int id)
 		{
 			var category = await _unitOfWork.Categories.Get(q => q.Id == id);
 
@@ -97,7 +97,7 @@ namespace SellAndSwapGoodies.Server.Controllers
 			await _unitOfWork.Categories.Insert(category);
 			await _unitOfWork.Save(HttpContext);
 
-			return CreatedAtAction("GetMake", new { id = category.Id }, category);
+			return CreatedAtAction("GetCategory", new { id = category.Id }, category);
 		}
 
 		// DELETE: api/Categories/5
@@ -109,8 +109,8 @@ namespace SellAndSwapGoodies.Server.Controllers
 			//    return NotFound();
 			//}
 			//var make = await _context.Makes.FindAsync(id);
-			var make = await _unitOfWork.Categories.Get(q => q.Id == id);
-			if (make == null)
+			var category = await _unitOfWork.Categories.Get(q => q.Id == id);
+			if (category == null)
 			{
 				return NotFound();
 			}

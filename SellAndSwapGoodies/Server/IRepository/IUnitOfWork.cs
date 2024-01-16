@@ -19,6 +19,8 @@ namespace SellAndSwapGoodies.Server.IRepository
 		IGenericRepository<Review> Reviews { get; }
 		IGenericRepository<Transaction> Transactions { get; }
 		IGenericRepository<User> Users { get; }
+		IGenericRepository<Condition> Conditions { get; }
+		IGenericRepository<Delivery> Deliverys { get; }
 
 	}
 }

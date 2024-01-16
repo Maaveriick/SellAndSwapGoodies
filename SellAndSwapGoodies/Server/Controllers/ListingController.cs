@@ -21,25 +21,20 @@ namespace SellAndSwapGoodies.Server.Controllers
 		{
 			_unitOfWork = unitOfWork;
 		}
-
-		// GET: api/Listings
-		[HttpGet]
+    
+        // GET: api/Listings
+        [HttpGet]
 		public async Task<IActionResult> GetListing()
 		{
-			var listings = await _unitOfWork.Listings.GetAll();
-			//if (_context.Makes == null)
-			if (listings == null)
-			{
-				return NotFound();
-			}
+			var Listings = await _unitOfWork.Listings.GetAll(includes: q => q.Include(x => x.User).Include(x => x.Category).Include(x => x.Condition));
 			//return await _context.Makes.ToListAsync();
-			return Ok(listings);
+			return Ok(Listings);
 
 		}
 
 		// GET: api/Listings/5
 		[HttpGet("{id}")]
-		public async Task<IActionResult> GetMake(int id)
+		public async Task<IActionResult> GetListing (int id)
 		{
 			var listing = await _unitOfWork.Listings.Get(q => q.Id == id);
 
@@ -109,8 +104,8 @@ namespace SellAndSwapGoodies.Server.Controllers
 			//    return NotFound();
 			//}
 			//var make = await _context.Makes.FindAsync(id);
-			var make = await _unitOfWork.Listings.Get(q => q.Id == id);
-			if (make == null)
+			var listing = await _unitOfWork.Listings.Get(q => q.Id == id);
+			if (listing == null)
 			{
 				return NotFound();
 			}

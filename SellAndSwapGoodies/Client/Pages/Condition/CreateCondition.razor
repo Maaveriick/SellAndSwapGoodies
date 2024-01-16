@@ -1,0 +1,40 @@
+﻿@page "/conditions/create/"
+@inject HttpClient _client
+@inject NavigationManager _navManager
+<h3 class=" card.title"> Create New Condition</h3>
+<hr />
+<br />
+<EditForm Model="@condition" OnValidSubmit="CreateNewCondition">
+	<DataAnnotationsValidator />
+	<ValidationSummary />
+	<div class="form-group">
+		<label> Status: </label>
+		<div>
+			<div>
+				<InputText @bind-Value="condition.Name" class="form-control">
+					<ValidationMessage For="@(() => condition.Name)" />
+				</InputText>
+			</div>
+		</div>
+	</div>
+	<button type="submit" class="btn btn-success btn-block">
+		Create ConditionStatus
+	</button>
+</EditForm>
+
+@code {
+	Condition condition = new Condition();
+
+	private IList<Condition>? Conditions;
+
+	protected async override Task OnInitializedAsync()
+	{
+		Conditions = await _client.GetFromJsonAsync<List<Condition>>($"{Endpoints.ConditionsEndpoint}");
+	}
+
+	private async Task CreateNewCondition()
+	{
+		await _client.PostAsJsonAsync(Endpoints.ConditionsEndpoint, condition);
+		_navManager.NavigateTo("/conditions");
+	}
+}

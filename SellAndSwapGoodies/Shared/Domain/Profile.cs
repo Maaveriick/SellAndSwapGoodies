@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Reflection.Metadata.Ecma335;
 using System.Runtime.CompilerServices;
+using System.ComponentModel.DataAnnotations;
 
 namespace SellAndSwapGoodies.Shared.Domain
 {

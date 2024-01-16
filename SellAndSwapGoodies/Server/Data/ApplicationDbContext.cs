@@ -15,20 +15,22 @@ namespace SellAndSwapGoodies.Server.Data
             IOptions<OperationalStoreOptions> operationalStoreOptions) : base(options, operationalStoreOptions)
         {
         }
-        public DbSet<Review> Review { get; set; }
-        public DbSet<Listing> Listing { get; set; } 
-        public DbSet<Chat> Chat { get; set; }
-        public DbSet<User> User { get; set; }  
-        public DbSet<Offer> Offer { get; set; }
-        public DbSet<Transaction> Transaction { get; set; }
-        public DbSet<Profile> Profile { get; set; }
-        public DbSet<Category> Category { get; set; }
-        public DbSet<DeliveryStatus> DeliveryStatus { get; set;}
+        public DbSet<Review> Reviews { get; set; }
+        public DbSet<Listing> Listings { get; set; } 
+
+        public DbSet<Chat> Chats { get; set; }
+        public DbSet<User> Users { get; set; }  
+        public DbSet<Offer> Offers { get; set; }
+        public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<Profile> Profiles { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<DeliveryStatus> DeliveryStatuses { get; set;}
+        public DbSet<Condition> Conditions { get; set; }
+        public DbSet<Delivery> Deliverys { get; set; }
 		protected override void OnModelCreating(ModelBuilder builder)
 		{
 			base.OnModelCreating(builder);
-            builder.ApplyConfiguration(new CategorySeedConfiguration());
-			builder.ApplyConfiguration(new RoleSeedConfiguration());
+            builder.ApplyConfiguration(new RoleSeedConfiguration());
 			builder.ApplyConfiguration(new UserSeedConfiguration());
 			builder.ApplyConfiguration(new UserRoleSeedConfiguration());
 		}

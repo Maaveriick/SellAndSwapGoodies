@@ -8,7 +8,7 @@ using SellAndSwapGoodies.Server.Data;
 
 #nullable disable
 
-namespace SellAndSwapGoodies.Server.Data.Migrations
+namespace SellAndSwapGoodies.Server.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -396,7 +396,7 @@ namespace SellAndSwapGoodies.Server.Data.Migrations
                         {
                             Id = "3781efa7-66dc-47f0-860f-e506d04102e4",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "73188bc8-e2fb-41f7-912e-ca0d9d8ae38a",
+                            ConcurrencyStamp = "24da8b8c-d110-4f7d-bc49-b8768916797e",
                             Email = "admin@localhost.com",
                             EmailConfirmed = false,
                             FirstName = "Admin",
@@ -404,9 +404,9 @@ namespace SellAndSwapGoodies.Server.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@LOCALHOST.COM",
                             NormalizedUserName = "ADMIN@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEIPi1XP0gQHp9XeWT0oukkIInV9Bx38Dl7WwYIUTeW2mGljo0V22lebnlw8xvLdWoQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEM5xybUTnuuwPWo1QtGB6f02BvqhW8F7l89dyJepMFHXK/N9K3W3XsVahXGZSMwHTg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "cefaab70-8b30-495a-9d19-7baa0bd7e6af",
+                            SecurityStamp = "2ac82350-5ac5-4b5b-8184-c8b3fef03f57",
                             TwoFactorEnabled = false,
                             UserName = "admin@localhost.com"
                         });
@@ -437,81 +437,7 @@ namespace SellAndSwapGoodies.Server.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Category");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 14, 21, 49, 26, 322, DateTimeKind.Local).AddTicks(4677),
-                            DateUpdated = new DateTime(2024, 1, 14, 21, 49, 26, 322, DateTimeKind.Local).AddTicks(4691),
-                            Name = "Electrical Appliances",
-                            UpdatedBy = "System"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 14, 21, 49, 26, 322, DateTimeKind.Local).AddTicks(4693),
-                            DateUpdated = new DateTime(2024, 1, 14, 21, 49, 26, 322, DateTimeKind.Local).AddTicks(4694),
-                            Name = "Clothing",
-                            UpdatedBy = "System"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 14, 21, 49, 26, 322, DateTimeKind.Local).AddTicks(4695),
-                            DateUpdated = new DateTime(2024, 1, 14, 21, 49, 26, 322, DateTimeKind.Local).AddTicks(4696),
-                            Name = "Watches",
-                            UpdatedBy = "System"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 14, 21, 49, 26, 322, DateTimeKind.Local).AddTicks(4697),
-                            DateUpdated = new DateTime(2024, 1, 14, 21, 49, 26, 322, DateTimeKind.Local).AddTicks(4697),
-                            Name = "Toys",
-                            UpdatedBy = "System"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 14, 21, 49, 26, 322, DateTimeKind.Local).AddTicks(4698),
-                            DateUpdated = new DateTime(2024, 1, 14, 21, 49, 26, 322, DateTimeKind.Local).AddTicks(4699),
-                            Name = "Cars",
-                            UpdatedBy = "System"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 14, 21, 49, 26, 322, DateTimeKind.Local).AddTicks(4700),
-                            DateUpdated = new DateTime(2024, 1, 14, 21, 49, 26, 322, DateTimeKind.Local).AddTicks(4700),
-                            Name = "Home Services",
-                            UpdatedBy = "System"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 14, 21, 49, 26, 322, DateTimeKind.Local).AddTicks(4701),
-                            DateUpdated = new DateTime(2024, 1, 14, 21, 49, 26, 322, DateTimeKind.Local).AddTicks(4701),
-                            Name = "Electronics",
-                            UpdatedBy = "System"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 14, 21, 49, 26, 322, DateTimeKind.Local).AddTicks(4702),
-                            DateUpdated = new DateTime(2024, 1, 14, 21, 49, 26, 322, DateTimeKind.Local).AddTicks(4703),
-                            Name = "Furniture",
-                            UpdatedBy = "System"
-                        });
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("SellAndSwapGoodies.Shared.Domain.Chat", b =>
@@ -549,7 +475,81 @@ namespace SellAndSwapGoodies.Server.Data.Migrations
 
                     b.HasIndex("UserID");
 
-                    b.ToTable("Chat");
+                    b.ToTable("Chats");
+                });
+
+            modelBuilder.Entity("SellAndSwapGoodies.Shared.Domain.Condition", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateUpdated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Conditions");
+                });
+
+            modelBuilder.Entity("SellAndSwapGoodies.Shared.Domain.Delivery", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateIn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateOut")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateUpdated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("DeliveryStatusID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ListingID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("UserID")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DeliveryStatusID");
+
+                    b.HasIndex("ListingID");
+
+                    b.HasIndex("UserID");
+
+                    b.ToTable("Deliverys");
                 });
 
             modelBuilder.Entity("SellAndSwapGoodies.Shared.Domain.DeliveryStatus", b =>
@@ -577,7 +577,7 @@ namespace SellAndSwapGoodies.Server.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("DeliveryStatus");
+                    b.ToTable("DeliveryStatuses");
                 });
 
             modelBuilder.Entity("SellAndSwapGoodies.Shared.Domain.Listing", b =>
@@ -591,8 +591,8 @@ namespace SellAndSwapGoodies.Server.Data.Migrations
                     b.Property<int?>("CategoryID")
                         .HasColumnType("int");
 
-                    b.Property<string>("Condition")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("ConditionID")
+                        .HasColumnType("int");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -628,9 +628,11 @@ namespace SellAndSwapGoodies.Server.Data.Migrations
 
                     b.HasIndex("CategoryID");
 
+                    b.HasIndex("ConditionID");
+
                     b.HasIndex("UserID");
 
-                    b.ToTable("Listing");
+                    b.ToTable("Listings");
                 });
 
             modelBuilder.Entity("SellAndSwapGoodies.Shared.Domain.Offer", b =>
@@ -663,7 +665,7 @@ namespace SellAndSwapGoodies.Server.Data.Migrations
 
                     b.HasIndex("UserID");
 
-                    b.ToTable("Offer");
+                    b.ToTable("Offers");
                 });
 
             modelBuilder.Entity("SellAndSwapGoodies.Shared.Domain.Profile", b =>
@@ -694,7 +696,7 @@ namespace SellAndSwapGoodies.Server.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Profile");
+                    b.ToTable("Profiles");
                 });
 
             modelBuilder.Entity("SellAndSwapGoodies.Shared.Domain.Review", b =>
@@ -736,7 +738,7 @@ namespace SellAndSwapGoodies.Server.Data.Migrations
 
                     b.HasIndex("UserID");
 
-                    b.ToTable("Review");
+                    b.ToTable("Reviews");
                 });
 
             modelBuilder.Entity("SellAndSwapGoodies.Shared.Domain.Transaction", b =>
@@ -790,7 +792,7 @@ namespace SellAndSwapGoodies.Server.Data.Migrations
 
                     b.HasIndex("UserID");
 
-                    b.ToTable("Transaction");
+                    b.ToTable("Transactions");
                 });
 
             modelBuilder.Entity("SellAndSwapGoodies.Shared.Domain.User", b =>
@@ -835,7 +837,7 @@ namespace SellAndSwapGoodies.Server.Data.Migrations
 
                     b.HasIndex("ProfileID");
 
-                    b.ToTable("User");
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -904,17 +906,44 @@ namespace SellAndSwapGoodies.Server.Data.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("SellAndSwapGoodies.Shared.Domain.Delivery", b =>
+                {
+                    b.HasOne("SellAndSwapGoodies.Shared.Domain.DeliveryStatus", "DeliveryStatus")
+                        .WithMany()
+                        .HasForeignKey("DeliveryStatusID");
+
+                    b.HasOne("SellAndSwapGoodies.Shared.Domain.Listing", "Listing")
+                        .WithMany()
+                        .HasForeignKey("ListingID");
+
+                    b.HasOne("SellAndSwapGoodies.Shared.Domain.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserID");
+
+                    b.Navigation("DeliveryStatus");
+
+                    b.Navigation("Listing");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("SellAndSwapGoodies.Shared.Domain.Listing", b =>
                 {
                     b.HasOne("SellAndSwapGoodies.Shared.Domain.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryID");
 
+                    b.HasOne("SellAndSwapGoodies.Shared.Domain.Condition", "Condition")
+                        .WithMany()
+                        .HasForeignKey("ConditionID");
+
                     b.HasOne("SellAndSwapGoodies.Shared.Domain.User", "User")
                         .WithMany()
                         .HasForeignKey("UserID");
 
                     b.Navigation("Category");
+
+                    b.Navigation("Condition");
 
                     b.Navigation("User");
                 });

@@ -97,7 +97,7 @@ namespace SellAndSwapGoodies.Server.Controllers
 			await _unitOfWork.DeliveryStatuses.Insert(deliverystatus);
 			await _unitOfWork.Save(HttpContext);
 
-			return CreatedAtAction("GetMake", new { id = deliverystatus.Id }, deliverystatus);
+			return CreatedAtAction("GetDeliveryStatus", new { id = deliverystatus.Id }, deliverystatus);
 		}
 
 		// DELETE: api/DeliveryStatuses/5
@@ -109,8 +109,8 @@ namespace SellAndSwapGoodies.Server.Controllers
 			//    return NotFound();
 			//}
 			//var make = await _context.Makes.FindAsync(id);
-			var make = await _unitOfWork.DeliveryStatuses.Get(q => q.Id == id);
-			if (make == null)
+			var deliverystatus = await _unitOfWork.DeliveryStatuses.Get(q => q.Id == id);
+			if (deliverystatus == null)
 			{
 				return NotFound();
 			}

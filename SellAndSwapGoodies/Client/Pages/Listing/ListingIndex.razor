@@ -18,7 +18,13 @@ else
     <table class="table table-responsive">
         <thead>
             <tr>
-                <th>Name</th>
+                <th>Seller</th>
+                <th>Item</th>
+                <th>Category</th>
+                <th>Location</th>
+                <th>Price</th>
+                <th>Condition</th>
+                <th>Description</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -26,7 +32,13 @@ else
             @foreach (var listing in Listings)
             {
                 <tr>
+                    <td>@listing.User?.Name</td>
                     <td>@listing.Name</td>
+                    <td>@listing.Category?.Name</td>
+                    <td>@listing.Location</td>
+                    <td>@listing.Price</td>
+                    <td>@listing.Condition?.Name</td>
+                    <td>@listing.Description</td>
                     <td>
                         <a href="listings/view/@listing.Id" class="btn btn-primary">
                             <span class="oi oi-book"></span>

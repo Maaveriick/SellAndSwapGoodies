@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SellAndSwapGoodies.Shared.Domain;
+using System.ComponentModel.DataAnnotations;
 
 namespace SellAndSwapGoodies.Shared.Domain
 {
