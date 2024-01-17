@@ -21,6 +21,7 @@ else
                 <th>User</th>
                 <th>Review</th>
                 <th>Rating</th>
+                <th>Timestamp</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -31,6 +32,7 @@ else
                     <td>@review.User?.Name</td>
                     <td>@review.ReviewText</td>
                     <td>@review.Rating</td>
+                    <td>@review.DateIn</td>
                     <td>
                         <a href="reviews/view/@review.Id" class="btn btn-primary">
                             <span class="oi oi-book"></span>
@@ -64,6 +66,7 @@ else
             if (confirm)
             {
                 await _client.DeleteAsync($"{Endpoints.ReviewsEndpoint}/{ReviewID}");
+                await OnInitializedAsync();
             }
         }
     }

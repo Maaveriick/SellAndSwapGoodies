@@ -23,6 +23,7 @@ else
                 <th>Item</th>
                 <th>Location</th>
                 <th>Delivery Status</th>
+                <th>Estimated Arrival</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -35,6 +36,7 @@ else
                     <td>@delivery.Listing.Name</td>
                     <td>@delivery.Listing.Location</td>
                     <td>@delivery.DeliveryStatus.Status</td>
+                    <td>@delivery.DateIn</td>
 
                     <td>
                         <a href="deliverys/view/@delivery.Id" class="btn btn-primary">
@@ -69,6 +71,7 @@ else
             if (confirm)
             {
                 await _client.DeleteAsync($"{Endpoints.DeliverysEndpoint}/{DeliveryID}");
+                await OnInitializedAsync();
             }
         }
     }

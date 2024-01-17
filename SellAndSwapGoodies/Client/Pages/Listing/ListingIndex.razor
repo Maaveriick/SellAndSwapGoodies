@@ -72,6 +72,7 @@ else
             if (confirm)
             {
                 await _client.DeleteAsync($"{Endpoints.ListingsEndpoint}/{ListingID}");
+                await OnInitializedAsync();
             }
         }
     }

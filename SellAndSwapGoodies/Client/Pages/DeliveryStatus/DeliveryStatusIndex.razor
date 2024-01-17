@@ -60,6 +60,7 @@ else
             if (confirm)
             {
                 await _client.DeleteAsync($"{Endpoints.DeliveryStatusesEndpoint}/{DeliveryStatusID}");
+                await OnInitializedAsync();
             }
         }
     }

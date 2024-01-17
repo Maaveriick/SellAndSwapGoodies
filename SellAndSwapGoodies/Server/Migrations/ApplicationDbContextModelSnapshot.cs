@@ -396,7 +396,7 @@ namespace SellAndSwapGoodies.Server.Migrations
                         {
                             Id = "3781efa7-66dc-47f0-860f-e506d04102e4",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "24da8b8c-d110-4f7d-bc49-b8768916797e",
+                            ConcurrencyStamp = "d35051de-d312-4df6-a5fa-28276622da11",
                             Email = "admin@localhost.com",
                             EmailConfirmed = false,
                             FirstName = "Admin",
@@ -404,9 +404,9 @@ namespace SellAndSwapGoodies.Server.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@LOCALHOST.COM",
                             NormalizedUserName = "ADMIN@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEM5xybUTnuuwPWo1QtGB6f02BvqhW8F7l89dyJepMFHXK/N9K3W3XsVahXGZSMwHTg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEB7g5hc1r+HBBND9VoSkOLT6MGBQ/7c3V/zUJ7c+Ozok3gKS3i510kcQyyQD/51GqQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2ac82350-5ac5-4b5b-8184-c8b3fef03f57",
+                            SecurityStamp = "a5e6a428-8ace-4c9b-8049-b3ffd2b7243e",
                             TwoFactorEnabled = false,
                             UserName = "admin@localhost.com"
                         });
