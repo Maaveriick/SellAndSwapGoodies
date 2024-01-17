@@ -32,7 +32,7 @@ else
                     <td>@review.User?.Name</td>
                     <td>@review.ReviewText</td>
                     <td>@review.Rating</td>
-                    <td>@review.DateIn</td>
+                    <td>@review.DateIn.ToString("dd MMMM yyyy")</td>
                     <td>
                         <a href="reviews/view/@review.Id" class="btn btn-primary">
                             <span class="oi oi-book"></span>
