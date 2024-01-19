@@ -36,7 +36,7 @@ else
                     <td>@delivery.Listing.Name</td>
                     <td>@delivery.Listing.Location</td>
                     <td>@delivery.DeliveryStatus.Status</td>
-                    <td>@delivery.DateIn</td>
+                    <td>@delivery.DateIn.ToString("dd MMMM yyyy")</td>
 
                     <td>
                         <a href="deliverys/view/@delivery.Id" class="btn btn-primary">

@@ -396,7 +396,7 @@ namespace SellAndSwapGoodies.Server.Migrations
                         {
                             Id = "3781efa7-66dc-47f0-860f-e506d04102e4",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d35051de-d312-4df6-a5fa-28276622da11",
+                            ConcurrencyStamp = "a1d2eea2-a3a1-42ba-acc4-ec7d90bebf70",
                             Email = "admin@localhost.com",
                             EmailConfirmed = false,
                             FirstName = "Admin",
@@ -404,9 +404,9 @@ namespace SellAndSwapGoodies.Server.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@LOCALHOST.COM",
                             NormalizedUserName = "ADMIN@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEB7g5hc1r+HBBND9VoSkOLT6MGBQ/7c3V/zUJ7c+Ozok3gKS3i510kcQyyQD/51GqQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEG+1c5v40dOTzjdwcEkWTc6ntIg2YcCTKQMmZsCcUE7n6crkyLMFeDI4yYTFOQQk7A==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a5e6a428-8ace-4c9b-8049-b3ffd2b7243e",
+                            SecurityStamp = "bbe34340-d412-48f9-b6eb-72f55c89b676",
                             TwoFactorEnabled = false,
                             UserName = "admin@localhost.com"
                         });
@@ -438,6 +438,35 @@ namespace SellAndSwapGoodies.Server.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedBy = "System",
+                            DateCreated = new DateTime(2024, 1, 19, 11, 25, 25, 508, DateTimeKind.Local).AddTicks(120),
+                            DateUpdated = new DateTime(2024, 1, 19, 11, 25, 25, 508, DateTimeKind.Local).AddTicks(122),
+                            Name = "Shoes",
+                            UpdatedBy = "System"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedBy = "System",
+                            DateCreated = new DateTime(2024, 1, 19, 11, 25, 25, 508, DateTimeKind.Local).AddTicks(125),
+                            DateUpdated = new DateTime(2024, 1, 19, 11, 25, 25, 508, DateTimeKind.Local).AddTicks(126),
+                            Name = "Electronics",
+                            UpdatedBy = "System"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedBy = "System",
+                            DateCreated = new DateTime(2024, 1, 19, 11, 25, 25, 508, DateTimeKind.Local).AddTicks(128),
+                            DateUpdated = new DateTime(2024, 1, 19, 11, 25, 25, 508, DateTimeKind.Local).AddTicks(129),
+                            Name = "Toys",
+                            UpdatedBy = "System"
+                        });
                 });
 
             modelBuilder.Entity("SellAndSwapGoodies.Shared.Domain.Chat", b =>
@@ -578,6 +607,26 @@ namespace SellAndSwapGoodies.Server.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("DeliveryStatuses");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedBy = "System",
+                            DateCreated = new DateTime(2024, 1, 19, 11, 25, 25, 507, DateTimeKind.Local).AddTicks(9775),
+                            DateUpdated = new DateTime(2024, 1, 19, 11, 25, 25, 507, DateTimeKind.Local).AddTicks(9791),
+                            Status = "Ongoing",
+                            UpdatedBy = "System"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedBy = "System",
+                            DateCreated = new DateTime(2024, 1, 19, 11, 25, 25, 507, DateTimeKind.Local).AddTicks(9795),
+                            DateUpdated = new DateTime(2024, 1, 19, 11, 25, 25, 507, DateTimeKind.Local).AddTicks(9796),
+                            Status = "Delivered",
+                            UpdatedBy = "System"
+                        });
                 });
 
             modelBuilder.Entity("SellAndSwapGoodies.Shared.Domain.Listing", b =>

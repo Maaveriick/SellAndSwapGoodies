@@ -1,0 +1,29 @@
+﻿<EditForm Model="@deliverystatus" OnValidSubmit="OnValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <fieldset disabled="@Disabled">
+
+    <div class="form-group">
+        <label>Status:</label>
+        <div>
+            <InputText @bind-Value="@deliverystatus.Status" class="form-control" />
+            <ValidationMessage For="@(() => deliverystatus.Status)" />
+        </div>
+    </div>
+
+    </fieldset>
+    @if(!Disabled)
+    {
+    <button type="submit" class="btn btn-success btn-block">
+        @ButtonText
+    </button>
+    }
+    <BackToList Target= "deliverystatuses" />
+</EditForm>
+@code {
+    [Parameter] public bool Disabled { get; set; } = false;
+    [Parameter] public DeliveryStatus? deliverystatus { get; set; }
+    [Parameter] public string ButtonText { get; set; } = "Save";
+    [Parameter] public EventCallback OnValidSubmit { get; set; }
+
+}

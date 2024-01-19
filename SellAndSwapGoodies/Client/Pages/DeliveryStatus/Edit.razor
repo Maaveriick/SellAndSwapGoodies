@@ -1,0 +1,24 @@
+﻿@page "/deliverystatuses/edit/{id:int}"
+@inject HttpClient _client
+@inject NavigationManager _navManager
+
+<h3> Edit DeliveryStatus</h3>
+
+<FormComponent ButtonText="Update" OnValidSubmit="EditDeliveryStatus" deliverystatus="deliverystatus" />
+
+@code {
+
+    [Parameter] public int id { get; set; }
+    DeliveryStatus? deliverystatus = new DeliveryStatus();
+
+    protected async override Task OnParametersSetAsync()
+    {
+        deliverystatus = await _client.GetFromJsonAsync<DeliveryStatus>($"{Endpoints.DeliveryStatusesEndpoint}/{id}");
+    }
+
+    async Task EditDeliveryStatus()
+    {
+        await _client.PutAsJsonAsync($"{Endpoints.DeliveryStatusesEndpoint}/{id}", deliverystatus);
+        _navManager.NavigateTo("/deliverystatuses/");
+    }
+}

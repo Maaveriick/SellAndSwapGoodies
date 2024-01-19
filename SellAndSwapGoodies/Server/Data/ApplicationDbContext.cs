@@ -1,5 +1,6 @@
 ﻿using Duende.IdentityServer.EntityFramework.Options;
 using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
+using Microsoft.Build.Framework;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using SellAndSwapGoodies.Server.Configurations.Entities;
@@ -33,6 +34,8 @@ namespace SellAndSwapGoodies.Server.Data
             builder.ApplyConfiguration(new RoleSeedConfiguration());
 			builder.ApplyConfiguration(new UserSeedConfiguration());
 			builder.ApplyConfiguration(new UserRoleSeedConfiguration());
+            builder.ApplyConfiguration(new DeliveryStatusSeedConfiguration());
+            builder.ApplyConfiguration(new CategorySeedConfiguration());
 		}
 
 	}

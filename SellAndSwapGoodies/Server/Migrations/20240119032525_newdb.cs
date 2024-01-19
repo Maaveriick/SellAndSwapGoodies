@@ -521,7 +521,26 @@ namespace SellAndSwapGoodies.Server.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "3781efa7-66dc-47f0-860f-e506d04102e4", 0, "d35051de-d312-4df6-a5fa-28276622da11", "admin@localhost.com", false, "Admin", "User", false, null, "ADMIN@LOCALHOST.COM", "ADMIN@LOCALHOST.COM", "AQAAAAIAAYagAAAAEB7g5hc1r+HBBND9VoSkOLT6MGBQ/7c3V/zUJ7c+Ozok3gKS3i510kcQyyQD/51GqQ==", null, false, "a5e6a428-8ace-4c9b-8049-b3ffd2b7243e", false, "admin@localhost.com" });
+                values: new object[] { "3781efa7-66dc-47f0-860f-e506d04102e4", 0, "a1d2eea2-a3a1-42ba-acc4-ec7d90bebf70", "admin@localhost.com", false, "Admin", "User", false, null, "ADMIN@LOCALHOST.COM", "ADMIN@LOCALHOST.COM", "AQAAAAIAAYagAAAAEG+1c5v40dOTzjdwcEkWTc6ntIg2YcCTKQMmZsCcUE7n6crkyLMFeDI4yYTFOQQk7A==", null, false, "bbe34340-d412-48f9-b6eb-72f55c89b676", false, "admin@localhost.com" });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "Name", "UpdatedBy" },
+                values: new object[,]
+                {
+                    { 1, "System", new DateTime(2024, 1, 19, 11, 25, 25, 508, DateTimeKind.Local).AddTicks(120), new DateTime(2024, 1, 19, 11, 25, 25, 508, DateTimeKind.Local).AddTicks(122), "Shoes", "System" },
+                    { 2, "System", new DateTime(2024, 1, 19, 11, 25, 25, 508, DateTimeKind.Local).AddTicks(125), new DateTime(2024, 1, 19, 11, 25, 25, 508, DateTimeKind.Local).AddTicks(126), "Electronics", "System" },
+                    { 3, "System", new DateTime(2024, 1, 19, 11, 25, 25, 508, DateTimeKind.Local).AddTicks(128), new DateTime(2024, 1, 19, 11, 25, 25, 508, DateTimeKind.Local).AddTicks(129), "Toys", "System" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "DeliveryStatuses",
+                columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "Status", "UpdatedBy" },
+                values: new object[,]
+                {
+                    { 1, "System", new DateTime(2024, 1, 19, 11, 25, 25, 507, DateTimeKind.Local).AddTicks(9775), new DateTime(2024, 1, 19, 11, 25, 25, 507, DateTimeKind.Local).AddTicks(9791), "Ongoing", "System" },
+                    { 2, "System", new DateTime(2024, 1, 19, 11, 25, 25, 507, DateTimeKind.Local).AddTicks(9795), new DateTime(2024, 1, 19, 11, 25, 25, 507, DateTimeKind.Local).AddTicks(9796), "Delivered", "System" }
+                });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
