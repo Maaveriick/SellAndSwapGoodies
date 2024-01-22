@@ -1,0 +1,68 @@
+﻿@page "/chats/createMessage/{id:int}"
+@inject HttpClient _client
+@inject NavigationManager _navManager
+
+<h3>Chat: </h3>
+
+<EditForm Model="@chat" OnValidSubmit="@CreateChat">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="form-group">
+        <label>Sender: </label>
+        <div>
+            <InputSelect @bind-Value="chat.MessageUser" class="form-control">
+                <option value="">-- Select User --</option>
+                @if (Offers != null)
+                {
+                    foreach (var offer in Offers)
+                    {
+                        if (@offer.Id == id)
+                        {
+                            <option value="@offer.Sender.Name">@offer.Sender.Name</option>
+                            <option value="@offer.Receiver.Name">@offer.Receiver.Name</option>
+                        }
+
+                    }
+                }
+            </InputSelect>
+            <ValidationMessage For="@(() => chat.MessageUser)" />
+        </div>
+
+        <div class="form-group">
+            <label>Message: </label>
+            <div>
+                <InputText @bind-Value="@chat.MessageText" class="form-control" />
+                <ValidationMessage For="@(() => chat.MessageText)" />
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" class=" btn btn-success btn-block">
+        Create Text
+    </button>
+
+</EditForm>
+
+@code {
+    Chat chat = new Chat();
+
+    private IList<Offer> Offers;
+    private DateTime _displaydate;
+
+    [Parameter] public int id { get; set; }
+
+    private async Task CreateChat()
+    {
+        chat.OfferID = id;
+        chat.ChatTimeStamp = _displaydate;
+        await _client.PostAsJsonAsync(Endpoints.ChatsEndpoint, chat);
+        _navManager.NavigateTo("/offers/chat/" + id.ToString());
+
+    }
+
+    protected async override Task OnInitializedAsync()
+    {
+        Offers = await _client.GetFromJsonAsync<List<Offer>>($"{Endpoints.OffersEndpoint}");
+        _displaydate = DateTime.Now;
+    }
+}

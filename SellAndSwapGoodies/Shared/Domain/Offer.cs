@@ -5,13 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using SellAndSwapGoodies.Shared.Domain;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SellAndSwapGoodies.Shared.Domain
 {
 	public class Offer:BaseDomainModel
 	{
-		public bool? OfferStatus {  get; set; }
-		public int? UserID { get; set; }
-		public virtual User ? User { get; set; }
+		[ForeignKey("Sender")]
+		public int? SendId { get; set; }
+		[ForeignKey("Receiver")]
+		public int? ReceiverId { get; set; }
+		public virtual User? Sender { get; set; }
+		public virtual User? Receiver { get; set; }
 	}
 }

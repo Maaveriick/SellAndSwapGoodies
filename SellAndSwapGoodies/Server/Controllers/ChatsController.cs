@@ -26,7 +26,7 @@ namespace SellAndSwapGoodies.Server.Controllers
 		[HttpGet]
 		public async Task<IActionResult> GetChat()
 		{
-			var chats = await _unitOfWork.Chats.GetAll();
+			var chats = await _unitOfWork.Chats.GetAll(includes: q => q.Include(x => x.Offer.Sender).Include(x => x.Offer.Receiver));
 			//if (_context.Makes == null)
 			if (chats == null)
 			{
@@ -126,7 +126,7 @@ namespace SellAndSwapGoodies.Server.Controllers
 		private async Task<bool> ChatExists(int id)
 		{
 			//return (_context.Chats?.Any(e => e.Id == id)).GetValueOrDefault();
-			var chat = _unitOfWork.Chats.Get(q => q.Id == id);
+			var chat = await _unitOfWork.Chats.Get(q => q.Id == id);
 
 			return chat != null;
 		}

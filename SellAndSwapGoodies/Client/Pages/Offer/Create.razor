@@ -1,0 +1,75 @@
+﻿@page "/offers/create/"
+@inject HttpClient _client
+@inject NavigationManager _navManager
+<h3 class=" card.title"> Create New Offer</h3>
+<hr />
+<br />
+
+<EditForm Model="@offer" OnValidSubmit="CreateNewOffer">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group">
+        <label>Sender:</label>
+        <div>
+            <InputSelect @bind-Value="offer.SendId" class="form-control">
+                <option value="">-- Select Sender --</option>
+                @if (Senders != null)
+                {
+                    foreach (var sender in Senders)
+                    {
+                        <option value="@sender.Id">@sender.Name</option>
+                    }
+                }
+            </InputSelect>
+            <ValidationMessage For="@(() => offer.SendId)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Receiver:</label>
+        <div>
+            <InputSelect @bind-Value="offer.ReceiverId" class="form-control">
+                <option value="">-- Select Receiver --</option>
+                @if (Receivers != null)
+                {
+                    foreach (var receiver in Receivers)
+                    {
+                        <option value="@receiver.Id">@receiver.Name</option>
+                    }
+                }
+            </InputSelect>
+            <ValidationMessage For="@(() => offer.ReceiverId)" />
+        </div>
+    </div>
+
+
+    <button type="submit" class="btn btn-success btn-block">
+        Create Offer
+    </button>
+
+
+</EditForm>
+
+@code {
+    Offer offer = new Offer();
+
+    private IList<Offer>? Offers;
+    private IList<User>? Users;
+    private IList<User>? Senders;
+    private IList<User>? Receivers;
+
+    protected async override Task OnInitializedAsync()
+    {
+        Offers = await _client.GetFromJsonAsync<List<Offer>>($"{Endpoints.OffersEndpoint}");
+        Senders = await _client.GetFromJsonAsync<List<User>>($"{Endpoints.UsersEndpoint}");
+        Receivers = await _client.GetFromJsonAsync<List<User>>($"{Endpoints.UsersEndpoint}");
+    }
+
+    private async Task CreateNewOffer()
+    {
+        await _client.PostAsJsonAsync(Endpoints.DeliverysEndpoint, offer);
+        _navManager.NavigateTo("/offers");
+
+    }
+}

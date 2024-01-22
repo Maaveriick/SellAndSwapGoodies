@@ -26,7 +26,7 @@ namespace SellAndSwapGoodies.Server.Controllers
 		[HttpGet]
 		public async Task<IActionResult> GetOffer()
 		{
-			var offers = await _unitOfWork.Offers.GetAll();
+			var offers = await _unitOfWork.Offers.GetAll(includes: q => q.Include(x => x.Sender).Include(x => x.Receiver));
 			//if (_context.Makes == null)
 			if (offers == null)
 			{
@@ -97,7 +97,7 @@ namespace SellAndSwapGoodies.Server.Controllers
 			await _unitOfWork.Offers.Insert(offer);
 			await _unitOfWork.Save(HttpContext);
 
-			return CreatedAtAction("GetMake", new { id = offer.Id }, offer);
+			return CreatedAtAction("GetOffer", new { id = offer.Id }, offer);
 		}
 
 		// DELETE: api/Offers/5

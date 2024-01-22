@@ -1,0 +1,27 @@
+﻿<EditForm Model="@chat" OnValidSubmit="OnValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <fieldset disabled="@Disabled">
+    <div class="form-group">
+        <label>Status:</label>
+        <div>
+            <InputText @bind-Value="@chat.MessageText" class="form-control" />
+            <ValidationMessage For="@(() => chat.MessageText)" />
+        </div>
+    </div>
+    </fieldset>
+    @if(!Disabled)
+    {
+    <button type="submit" class="btn btn-success btn-block">
+        @ButtonText
+    </button>
+    }
+    <BackToList Target="chats" />
+</EditForm>
+@code {
+    [Parameter] public bool Disabled { get; set; } = false;
+    [Parameter] public Chat? chat { get; set; }
+    [Parameter] public string ButtonText { get; set; } = "Save";
+    [Parameter] public EventCallback OnValidSubmit { get; set; }
+
+}

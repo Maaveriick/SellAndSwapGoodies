@@ -59,6 +59,18 @@
             </InputSelect>
             <ValidationMessage For="@(() => delivery.DeliveryStatusID)" />
         </div>
+
+        <div class="form-group">
+            <label> DateIn: </label>
+            <div>
+                <div>
+                    <InputDate @bind-Value="delivery.DateIn" class="form-control">
+                        <ValidationMessage For="@(() => delivery.DateIn)" />
+                    </InputDate>
+                </div>
+            </div>
+        </div>
+
         <button type="submit" class="btn btn-success btn-block">
             Create Delivery
         </button>

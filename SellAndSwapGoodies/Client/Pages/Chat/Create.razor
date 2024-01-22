@@ -1,0 +1,66 @@
+﻿@page "/chats/create/"
+@inject HttpClient _client
+@inject NavigationManager _navManager
+
+<h3 class="card-title">Create New Chat</h3>
+<h4>Select Match to create new chat</h4>
+<br />
+
+@if (Offers == null)
+{
+    <div class="alert alert-info">Loading Offers...</div>
+}
+else
+{
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th> User 1</th>
+                <th> User 2</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var offer in Offers)
+            {
+                <tr>
+                    <td>@offer.Sender.Name</td>
+                    <td>@offer.Receiver.Name</td>
+                    <td>
+                        <a href=" /chats/createMessage/@offer.Id" class=" btn btn-primary">
+                            <span class="oi oi-book"></span>
+                        </a>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+}
+@*<button type="submit" class=" btn btn-success btn-block">
+        Next
+    </button>*@
+
+@*<BackToList Target="matches" />*@
+
+@code {
+    Chat chat = new Chat();
+
+    private IList<Offer> Offers;
+    private DateTime _displaydate;
+
+
+    protected async override Task OnInitializedAsync()
+    {
+        Offers = await _client.GetFromJsonAsync<List<Offer>>($"{Endpoints.OffersEndpoint}");
+        _displaydate = DateTime.Now;
+    }
+
+
+    //private async Task CreateChat()
+    //{
+    //    chat.ChatTimeStamp = _displaydate;
+    //    await _client.PostAsJsonAsync(Endpoints.ChatsEndpoint, chat);
+    //    _navManager.NavigateTo("/chats/");
+    //}
+}

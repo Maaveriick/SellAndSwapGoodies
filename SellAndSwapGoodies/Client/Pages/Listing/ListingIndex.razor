@@ -42,12 +42,19 @@ else
                     <td>
                         <a href="listings/view/@listing.Id" class="btn btn-primary">
                             <span class="oi oi-book"></span>
+                            View
+                        </a>
+                        <a href="chats/" class="btn btn-primary">
+                            <span class="oi oi-book"></span>
+                            Chat
                         </a>
                         <a href="listings/edit/@listing.Id" class="btn btn-warning">
                             <span class="oi oi-pencil"></span>
+                            Edit
                         </a>
                         <button class="btn btn-danger" @onclick="@(()=>Delete(listing.Id))">
                             <span class="oi oi-delete"></span>"
+                            Delete
                         </button>
                     </td>
                 </tr>
@@ -57,10 +64,12 @@ else
 }
 @code {
     private List<Listing>? Listings;
+    private List<Chat>? Chats;
 
     protected async override Task OnInitializedAsync()
     {
         Listings = await _client.GetFromJsonAsync<List<Listing>>($"{Endpoints.ListingsEndpoint}");
+        Chats = await _client.GetFromJsonAsync<List<Chat>>($"{Endpoints.ChatsEndpoint}");
     }
 
     async Task Delete(int ListingID)
