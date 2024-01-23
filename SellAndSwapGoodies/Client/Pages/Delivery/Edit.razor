@@ -1,0 +1,25 @@
+﻿@page "/deliverys/edit/{id:int}"
+@inject HttpClient _client
+@inject NavigationManager _navManager
+
+<h3> Edit Delivery</h3>
+
+<FormComponent ButtonText="Update" OnValidSubmit="EditDelivery" delivery="delivery" />
+
+@code {
+    [Parameter] public int id { get; set; }
+    Delivery? delivery = new Delivery();
+
+    protected async override Task OnParametersSetAsync()
+    {
+        delivery = await
+        _client.GetFromJsonAsync<Delivery>($"{Endpoints.DeliverysEndpoint}/{id}");
+    }
+
+    async Task EditDelivery()
+    {
+        await _client.PutAsJsonAsync($"{Endpoints.DeliverysEndpoint}/{id}",
+        delivery);
+        _navManager.NavigateTo("/deliverys/");
+    }
+}

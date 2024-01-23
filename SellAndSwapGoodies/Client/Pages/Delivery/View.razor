@@ -1,0 +1,14 @@
+﻿@page "/deliverys/view/{id:int}"
+@inject HttpClient _client
+@inject NavigationManager _navManager
+<h3>View</h3>
+<FormComponent delivery="delivery" Disabled="true" />
+@code {
+	[Parameter] public int id { get; set; }
+	Delivery? delivery = new Delivery();
+	protected async override Task OnParametersSetAsync()
+	{
+		delivery = await
+		_client.GetFromJsonAsync<Delivery>($"{Endpoints.DeliverysEndpoint}/{id}");
+	}
+}

@@ -1,0 +1,125 @@
+﻿@inject HttpClient _client
+<EditForm Model="@listing" OnValidSubmit="OnValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+        <fieldset disabled="@Disabled" >
+
+        <div class="form-group">
+            <label>Seller:</label>
+            <div>
+                <InputSelect @bind-Value="listing.UserID" class="form-control">
+                    <option value="">-- Select User --</option>
+                    @if (Users != null)
+                    {
+                        foreach (var user in Users)
+                        {
+                            <option value="@user.Id">@user.Name</option>
+                        }
+                    }
+                </InputSelect>
+                <ValidationMessage For="@(() => listing.UserID)" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label> Name: </label>
+            <div>
+                <div>
+                    <InputText @bind-Value="listing.Name" class="form-control">
+                        <ValidationMessage For="@(() => listing.Name)" />
+                    </InputText>
+                </div>
+            </div>
+        </div>
+
+            <div class="form-group">
+                <label>Category:</label>
+                <div>
+                    <InputSelect @bind-Value="listing.CategoryID" class="form-control">
+                        <option value="">-- Select Category --</option>
+                        @if (Categories != null)
+                        {
+                            foreach (var category in Categories)
+                            {
+                                <option value="@category.Id">@category.Name</option>
+                            }
+                        }
+                    </InputSelect>
+                    <ValidationMessage For="@(() => listing.CategoryID)" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label> Location: </label>
+                <div>
+                    <div>
+                        <InputText @bind-Value="listing.Location" class="form-control">
+                            <ValidationMessage For="@(() => listing.Location)" />
+                        </InputText>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label> Price: </label>
+                <div>
+                    <div>
+                        <InputNumber @bind-Value="listing.Price" class="form-control">
+                            <ValidationMessage For="@(() => listing.Price)" />
+                        </InputNumber>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Condition:</label>
+                <div>
+                    <InputSelect @bind-Value="listing.ConditionID" class="form-control">
+                        <option value="">-- Select Condition --</option>
+                        @if (Conditions != null)
+                        {
+                            foreach (var condition in Conditions)
+                            {
+                                <option value="@condition.Id">@condition.Name</option>
+                            }
+                        }
+                    </InputSelect>
+                    <ValidationMessage For="@(() => listing.CategoryID)" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label> Description: </label>
+                <div>
+                    <div>
+                        <InputText @bind-Value="listing.Description" class="form-control">
+                            <ValidationMessage For="@(() => listing.Description)" />
+                        </InputText>
+                    </div>
+                </div>
+            </div>
+    </fieldset>
+    @if (!Disabled)
+    {
+        <button type="submit" class="btn btn-success btn-block">
+            @ButtonText
+    </button>
+    }
+    <BackToList Target="listings" />
+
+</EditForm>
+@code {
+    [Parameter] public bool Disabled { get; set; } = false;
+    [Parameter] public Listing? listing { get; set; }
+    [Parameter] public string ButtonText { get; set; } = "Save";
+    [Parameter] public EventCallback OnValidSubmit { get; set; }
+
+    private IList<Listing>? Listings;
+    private IList<Category>? Categories;
+    private IList<Condition>? Conditions;
+    private IList<User>? Users;
+    protected async override Task OnInitializedAsync()
+    {
+        Users = await _client.GetFromJsonAsync<List<User>>($"{Endpoints.UsersEndpoint}");
+        Conditions = await _client.GetFromJsonAsync<List<Condition>>($"{Endpoints.ConditionsEndpoint}");
+        Categories = await _client.GetFromJsonAsync<List<Category>>($"{Endpoints.CategoriesEndpoint}");
+    }
+}

@@ -1,0 +1,14 @@
+﻿@page "/chats/view/{id:int}"
+@inject HttpClient _client
+@inject NavigationManager _navManager
+<h3>View</h3>
+<FormComponent chat="chat" Disabled="true" />
+@code {
+	[Parameter] public int id { get; set; }
+	Chat? chat = new Chat();
+	protected async override Task OnParametersSetAsync()
+	{
+		chat = await
+		_client.GetFromJsonAsync<Chat>($"{Endpoints.ChatsEndpoint}/{id}");
+	}
+}

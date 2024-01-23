@@ -1,0 +1,39 @@
+﻿<EditForm Model="@transaction" OnValidSubmit="OnValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+        <fieldset disabled="@Disabled" >
+    <div class="form-group">
+        <label>CreditCardName:</label>
+        <div>
+            <InputText @bind-Value="@transaction.CreditCardName" class="form-control" />
+            <ValidationMessage For="@(() => transaction.CreditCardName)" />
+        </div>
+
+        <label>CreditCardExpiryName:</label>
+        <div>
+                <InputText @bind-Value="@transaction.CreditCardExpiryName" class="form-control" />
+                <ValidationMessage For="@(() => transaction.CreditCardExpiryName)" />
+        </div>
+
+            <label>CreditCardNumber:</label>
+        <div>
+                <InputNumber @bind-Value="@transaction.CreditCardNumber" class="form-control" />
+                <ValidationMessage For="@(() => transaction.CreditCardNumber)" />
+        </div>
+    </div>
+    </fieldset>
+    @if (!Disabled)
+    {
+        <button type="submit" class="btn btn-success btn-block">
+            @ButtonText
+    </button>
+    }
+    <BackToList Target="transactions" />
+</EditForm>
+@code {
+    [Parameter] public bool Disabled { get; set; } = false;
+    [Parameter] public Transaction? transaction { get; set; }
+    [Parameter] public string ButtonText { get; set; } = "Save";
+    [Parameter] public EventCallback OnValidSubmit { get; set; }
+
+}

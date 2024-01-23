@@ -1,0 +1,59 @@
+﻿@inject HttpClient _client
+<EditForm Model="@review" OnValidSubmit="OnValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+        <fieldset disabled="@Disabled" >
+        <div class="form-group">
+            <label>User:</label>
+            <div>
+                <InputSelect @bind-Value="review.UserID" class="form-control">
+                    <option value="">-- Select User --</option>
+                    @if (Users != null)
+                    {
+                        foreach (var user in Users)
+                        {
+                            <option value="@user.Id">@user.Name</option>
+                        }
+                    }
+                </InputSelect>
+                <ValidationMessage For="@(() => review.UserID)" />
+            </div>
+        </div>
+        <label>ReviewText:</label>
+        <div>
+                <InputText @bind-Value="@review.ReviewText" class="form-control" />
+                <ValidationMessage For="@(() => review.ReviewText)" />
+        </div>
+
+        <label>Rating:</label>
+        <div>
+                <InputNumber @bind-Value="@review.Rating" class="form-control" />
+                <ValidationMessage For="@(() => review.Rating)" />
+        </div>
+        <label>Timestamp:</label>
+        <div>
+                <InputDate @bind-Value="@review.DateOut" class="form-control" />
+                <ValidationMessage For="@(() => review.DateIn)" />
+        </div>
+
+    </fieldset>
+    @if (!Disabled)
+    {
+        <button type="submit" class="btn btn-success btn-block">
+            @ButtonText
+    </button>
+    }
+    <BackToList Target="reviews" />
+</EditForm>
+@code {
+    [Parameter] public bool Disabled { get; set; } = false;
+    [Parameter] public Review? review { get; set; }
+    [Parameter] public string ButtonText { get; set; } = "Save";
+    [Parameter] public EventCallback OnValidSubmit { get; set; }
+
+    private IList<User>? Users;
+    protected async override Task OnInitializedAsync()
+    {
+        Users = await _client.GetFromJsonAsync<List<User>>($"{Endpoints.UsersEndpoint}");
+    }
+}
