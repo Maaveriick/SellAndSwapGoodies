@@ -1,4 +1,4 @@
-﻿@*@page "/offers/view/{id:int}"
+﻿@page "/offers/view/{id:int}"
 @inject HttpClient _client
 @inject NavigationManager _navManager
 <h3>View</h3>
@@ -11,4 +11,4 @@
 		offer = await
 		_client.GetFromJsonAsync<Offer>($"{Endpoints.OffersEndpoint}/{id}");
 	}
-}*@
+}

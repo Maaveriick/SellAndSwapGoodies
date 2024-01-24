@@ -1,4 +1,4 @@
-﻿@*
+﻿
 <EditForm Model="@user" OnValidSubmit="OnValidSubmit">
     <DataAnnotationsValidator />
     <ValidationSummary />
@@ -17,10 +17,17 @@
         </div>
 
             <label>Gender:</label>
-        <div>
-                <InputText @bind-Value="@user.Gender" class="form-control" />
-                <ValidationMessage For="@(() => user.Gender)" />
-        </div>
+            <div class="form-group">
+                <label>Gender: </label>
+                <div>
+                    <InputSelect @bind-Value="user.Gender" class="form-control">
+                        <option value="">-- Select Gender --</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </InputSelect>
+                    <ValidationMessage For="@(() => user.Gender)" />
+                </div>
+            </div>
       
         <label>Password:</label>
         <div>
@@ -51,4 +58,3 @@
     [Parameter] public EventCallback OnValidSubmit { get; set; }
 
 }
-*@

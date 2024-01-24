@@ -1,4 +1,5 @@
-﻿<EditForm Model="@condition" OnValidSubmit="OnValidSubmit">
+﻿@*
+<EditForm Model="@condition" OnValidSubmit="OnValidSubmit">
     <DataAnnotationsValidator />
     <ValidationSummary />
     <fieldset disabled="@Disabled">
@@ -25,3 +26,4 @@
     [Parameter] public EventCallback OnValidSubmit { get; set; }
 
 }
+*@

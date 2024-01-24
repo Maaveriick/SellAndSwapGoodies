@@ -12,9 +12,11 @@ namespace SellAndSwapGoodies.Shared.Domain
 	public class Offer:BaseDomainModel
 	{
         [ForeignKey("Sender")]
+
         public int? SenderId { get; set; }
 
         [ForeignKey("Receiver")]
+
         public int? ReceiverId { get; set; }
 
         public virtual User? Sender { get; set; }

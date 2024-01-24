@@ -2,6 +2,9 @@
 @inject HttpClient _client
 @inject IJSRuntime js
 @attribute [Authorize]
+@inject HttpInterceptorService _interceptor
+@implements IDisposable
+@using SellAndSwapGoodies.Client.Services
 
 <h3 class="card-title">Offers</h3>
 <a href="/offers/create" class="btn btn-secondary">
@@ -17,7 +20,7 @@
 }
 else
 {
-    <table id="offersTable" class="table table-responsive">
+    <table class="table table-responsive" id="offersTable">
         <thead>
             <tr>
                 <th>Buyer</th>
@@ -29,11 +32,16 @@ else
             @foreach (var offer in Offers)
             {
                 <tr>
-                    <td>@offer.Sender.Name</td>
-                    <td>@offer.Receiver.Name</td>
+                    <td>@offer.Sender?.Name</td>
+                    <td>@offer.Receiver?.Name</td>
                     <td>
                         <a href="/offers/chat/@offer.Id" class="btn btn-primary">
                             <span class="oi oi-book"></span>
+                            Users Chat
+                        </a>
+                        <a href="chats/" class="btn btn-primary">
+                            <span class="oi oi-book"></span>
+                            Chat
                         </a>
                         <a href="/offers/edit/@offer.Id" class="btn btn-warning">
                             <span class="oi oi-pencil"></span>
@@ -50,13 +58,10 @@ else
 
 @code {
     private List<Offer>? Offers;
-    private IList<User>? Senders;
-    private IList<User>? Receivers;
     protected override async Task OnInitializedAsync()
     {
+        _interceptor.MonitorEvent();
         Offers = await _client.GetFromJsonAsync<List<Offer>>($"{Endpoints.OffersEndpoint}");
-        Senders = await _client.GetFromJsonAsync<List<User>>($"{Endpoints.UsersEndpoint}");
-        Receivers = await _client.GetFromJsonAsync<List<User>>($"{Endpoints.UsersEndpoint}");
     }
 
     private async Task Delete(int offerId)
@@ -64,7 +69,7 @@ else
         if (Offers != null)
         {
             var offer = Offers.First(q => q.Id == offerId);
-            var confirm = await js.InvokeAsync<bool>("confirm", $"Do you want to delete {offer.Sender.Name}?");
+            var confirm = await js.InvokeAsync<bool>("confirm", $"Do you want to delete {offer.Sender?.Name}?");
 
             if (confirm)
             {
@@ -74,5 +79,14 @@ else
         }
     }
 
+    protected async override Task OnAfterRenderAsync(bool firstRender)
+    {
+        await js.InvokeVoidAsync("AddDataTable", "#offersTable");
+    }
+
+    public void Dispose()
+    {
+        js.InvokeVoidAsync("DataTablesDispose", "#offersTable");
+    }
 
 }

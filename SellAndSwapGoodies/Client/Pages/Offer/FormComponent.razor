@@ -1,19 +1,42 @@
-﻿@*EditForm Model="@offer" OnValidSubmit="OnValidSubmit">
+﻿@inject HttpClient _client
+<EditForm Model="@offer" OnValidSubmit="OnValidSubmit">
     <DataAnnotationsValidator />
     <ValidationSummary />
         <fieldset disabled="@Disabled" >
-    <div class="form-group">
-        <label>Sender:</label>
-        <div>
-            <InputText @bind-Value="@offer.Sender" class="form-control" />
-            <ValidationMessage For="@(() => offer.Sender)" />
+        <div class="form-group">
+            <label>Sender:</label>
+            <div>
+                <InputSelect @bind-Value="offer.SenderId" class="form-control">
+                    <option value="">-- Select Sender --</option>
+                    @if (Senders != null)
+                    {
+                        foreach (var sender in Senders)
+                        {
+                            <option value="@sender.Id">@sender.Name</option>
+                        }
+                    }
+                </InputSelect>
+                <ValidationMessage For="@(() => offer.SenderId)" />
+            </div>
         </div>
 
-        <label>Receiver:</label>
-        <div>
-                <InputNumber @bind-Value="@offer.Receiver" class="form-control" />
-                <ValidationMessage For="@(() => offer.Receiver)" />
-    </div>
+        <div class="form-group">
+            <label>Receiver:</label>
+            <div>
+                <InputSelect @bind-Value="offer.ReceiverId" class="form-control">
+                    <option value="">-- Select Receiver --</option>
+                    @if (Receivers != null)
+                    {
+                        foreach (var receiver in Receivers)
+                        {
+                            <option value="@receiver.Id">@receiver.Name</option>
+                        }
+                    }
+                </InputSelect>
+                <ValidationMessage For="@(() => offer.ReceiverId)" />
+            </div>
+        </div>
+
     </fieldset>
     @if (!Disabled)
     {
@@ -29,6 +52,14 @@
     [Parameter] public string ButtonText { get; set; } = "Save";
     [Parameter] public EventCallback OnValidSubmit { get; set; }
 
- 
-}*@
+    private IList<Offer>? Offers;
+    private IList<User>? Senders;
+    private IList<User>? Receivers;
 
+    protected async override Task OnInitializedAsync()
+    {
+        Offers = await _client.GetFromJsonAsync<List<Offer>>($"{Endpoints.OffersEndpoint}");
+        Senders = await _client.GetFromJsonAsync<List<User>>($"{Endpoints.UsersEndpoint}");
+        Receivers = await _client.GetFromJsonAsync<List<User>>($"{Endpoints.UsersEndpoint}");
+    }
+}

@@ -1,7 +1,11 @@
-﻿@page "/deliverystatuses/"
+﻿@*
+@page "/deliverystatuses/"
 @inject HttpClient _client
 @inject IJSRuntime js
 @attribute [Authorize]
+@inject HttpInterceptorService _interceptor
+@implements IDisposable
+@using SellAndSwapGoodies.Client.Services
 
 <h3 class=" = " card_title">DeliveryStatuses</h3>"
 <br />
@@ -48,6 +52,7 @@ else
 
     protected async override Task OnInitializedAsync()
     {
+    _interceptor.MonitorEvent();
         DeliveryStatuses = await _client.GetFromJsonAsync<List<DeliveryStatus>>($"{Endpoints.DeliveryStatusesEndpoint}");
     }
 
@@ -64,4 +69,9 @@ else
             }
         }
     }
+    public void Dispose()
+    {
+        _interceptor.DisposeEvent();
+    }
 }
+*@

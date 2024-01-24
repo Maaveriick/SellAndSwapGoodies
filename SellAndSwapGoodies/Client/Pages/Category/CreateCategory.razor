@@ -1,4 +1,5 @@
-﻿@page "/categories/create/"
+﻿@*
+@page "/categories/create/"
 @inject HttpClient _client
 @inject NavigationManager _navManager
 <h3 class=" card.title"> Create New Categories</h3>
@@ -31,3 +32,4 @@
 		_navManager.NavigateTo("/categories/");
 	}
 }
+*@

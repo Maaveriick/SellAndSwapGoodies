@@ -18,7 +18,7 @@ namespace SellAndSwapGoodies.Server.Configurations.Entities
 new DeliveryStatus
 {
     Id = 1,
-    Status = "Ongoing",
+    Status = "Shipped",
     DateCreated = DateTime.Now,
     DateUpdated = DateTime.Now,
     CreatedBy = "System",
@@ -28,6 +28,24 @@ new DeliveryStatus
 {
     Id = 2,
     Status = "Delivered",
+    DateCreated = DateTime.Now,
+    DateUpdated = DateTime.Now,
+    CreatedBy = "System",
+    UpdatedBy = "System"
+},
+new DeliveryStatus
+{
+    Id = 3,
+    Status = "Canceled",
+    DateCreated = DateTime.Now,
+    DateUpdated = DateTime.Now,
+    CreatedBy = "System",
+    UpdatedBy = "System"
+},
+new DeliveryStatus
+{
+    Id = 4,
+    Status = "Pending",
     DateCreated = DateTime.Now,
     DateUpdated = DateTime.Now,
     CreatedBy = "System",

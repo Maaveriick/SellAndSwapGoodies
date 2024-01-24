@@ -2,6 +2,9 @@
 @inject HttpClient _client
 @inject IJSRuntime js
 @attribute [Authorize]
+@inject HttpInterceptorService _interceptor
+@implements IDisposable
+@using SellAndSwapGoodies.Client.Services
 
 <h3 class=" = " card_title">Transactions</h3>"
 <br />
@@ -15,7 +18,7 @@
 }
 else
 {
-    <table class="table table-responsive">
+    <table class="table table-responsive" id="transactionsTable">
         <thead>
             <tr>
                 <th>CreditCardName</th>
@@ -31,6 +34,7 @@ else
                     <td>@transaction.CreditCardName</td>
                     <td>@transaction.CreditCardExpiryName</td>
                     <td>@transaction.CreditCardNumber</td>
+                    <td>@transaction.CVV</td>
                     <td>
                         <a href="transactions/view/@transaction.Id" class="btn btn-primary">
                             <span class="oi oi-book"></span>
@@ -52,6 +56,7 @@ else
 
     protected async override Task OnInitializedAsync()
     {
+        _interceptor.MonitorEvent();
         Transactions = await _client.GetFromJsonAsync<List<Transaction>>($"{Endpoints.TransactionsEndpoint}");
     }
 
@@ -67,5 +72,15 @@ else
                 await OnInitializedAsync();
             }
         }
+    }
+
+    protected async override Task OnAfterRenderAsync(bool firstRender)
+    {
+        await js.InvokeVoidAsync("AddDataTable", "#transactionsTable");
+    }
+
+    public void Dispose()
+    {
+        js.InvokeVoidAsync("DataTablesDispose", "#transactionsTable");
     }
 }

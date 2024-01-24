@@ -30,11 +30,7 @@
                 <InputNumber @bind-Value="@review.Rating" class="form-control" />
                 <ValidationMessage For="@(() => review.Rating)" />
         </div>
-        <label>Timestamp:</label>
-        <div>
-                <InputDate @bind-Value="@review.DateOut" class="form-control" />
-                <ValidationMessage For="@(() => review.DateIn)" />
-        </div>
+        
 
     </fieldset>
     @if (!Disabled)

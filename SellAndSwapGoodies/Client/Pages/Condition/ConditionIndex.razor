@@ -1,7 +1,11 @@
-﻿@page "/conditions/"
+﻿@*
+@page "/conditions/"
 @inject HttpClient _client
 @inject IJSRuntime js
 @attribute [Authorize]
+@inject HttpInterceptorService _interceptor
+@implements IDisposable
+@using SellAndSwapGoodies.Client.Services
 
 <h3 class=" = " card_title">Condition</h3>"
 <br />
@@ -48,6 +52,7 @@ else
 
     protected async override Task OnInitializedAsync()
     {
+    _interceptor.MonitorEvent();
         Conditions = await _client.GetFromJsonAsync<List<Condition>>($"{Endpoints.ConditionsEndpoint}");
     }
 
@@ -64,4 +69,9 @@ else
             }
         }
     }
+    public void Dispose()
+    {
+        _interceptor.DisposeEvent();
+    }
 }
+*@

@@ -6,129 +6,124 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SellAndSwapGoodies.Server.Data;
-using SellAndSwapGoodies.Server.IRepository;
 using SellAndSwapGoodies.Shared.Domain;
+using SellAndSwapGoodies.Server.IRepository;
+using SellAndSwapGoodies.Server.IRepository;
 
 namespace SellAndSwapGoodies.Server.Controllers
 {
-	[Route("api/[controller]")]
-	[ApiController]
-	public class OffersController : ControllerBase
-	{
-		private readonly IUnitOfWork _unitOfWork;
+    [Route("api/[controller]")]
+    [ApiController]
+    public class OffersController : ControllerBase
+    {
+        //Refactored
+        //private readonly ApplicationDbContext _context;
+        private readonly IUnitOfWork _unitOfWork;
 
-		public OffersController(IUnitOfWork unitOfWork)
-		{
-			_unitOfWork = unitOfWork;
-		}
+        //public OffersController(ApplicationDbContext context)
+        public OffersController(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+        }
 
-		// GET: api/Offers
-		[HttpGet]
-		public async Task<IActionResult> GetOffer()
-		{
-			var offers = await _unitOfWork.Offers.GetAll(includes: q => q.Include(x => x.Sender).Include(x => x.Receiver));
-			//if (_context.Makes == null)
-			if (offers == null)
-			{
-				return NotFound();
-			}
-			//return await _context.Makes.ToListAsync();
-			return Ok(offers);
+        // GET: api/Offers
+        [HttpGet]
+        //public async Task<ActionResult<IEnumerable<Offer>>> GetOffers()
+        public async Task<IActionResult> GetOffers()
+        {
+            //return await _context.Offers.ToListAsync();
+            var offers = await _unitOfWork.Offers.GetAll(includes: q => q.Include(x => x.Sender).Include(x => x.Receiver));
+            return Ok(offers);
+        }
 
-		}
+        // GET: api/Offers/5
+        [HttpGet("{id}")]
+        //public async Task<ActionResult<Offer>> GetOffer(int id)
+        public async Task<IActionResult> GetOffer(int id)
+        {
+            //var offer = await _context.Offers.FindAsync(id);
+            var offer = await _unitOfWork.Offers.Get(q => q.Id == id);
 
-		// GET: api/Offers/5
-		[HttpGet("{id}")]
-		public async Task<IActionResult> GetOffer(int id)
-		{
-			var offer = await _unitOfWork.Offers.Get(q => q.Id == id);
+            if (offer == null)
+            {
+                return NotFound();
+            }
 
-			if (offer == null)
-			{
-				return NotFound();
-			}
-			return Ok(offer);
-		}
+            return Ok(offer);
+        }
 
-		// PUT: api/Offers/5
-		// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-		[HttpPut("{id}")]
-		public async Task<IActionResult> PutOffer(int id, Offer offer)
-		{
-			if (id != offer.Id)
-			{
-				return BadRequest();
-			}
+        // PUT: api/Offers/5
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutOffer(int id, Offer offer)
+        {
+            if (id != offer.Id)
+            {
+                return BadRequest();
+            }
 
-			//_context.Entry(make).State = EntityState.Modified;
-			_unitOfWork.Offers.Update(offer);
+            //_context.Entry(offer).State = EntityState.Modified;
+            _unitOfWork.Offers.Update(offer);
 
-			try
-			{
-				//await _context.SaveChangesAsync();
-				await _unitOfWork.Save(HttpContext);
-			}
-			catch (DbUpdateConcurrencyException)
-			{
-				if (!await OfferExists(id))
-				{
-					return NotFound();
-				}
-				else
-				{
-					throw;
-				}
-			}
+            try
+            {
+                //await _context.SaveChangesAsync();
+                await _unitOfWork.Save(HttpContext);
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                //if (!OfferExists(id))
+                if (!await OfferExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
 
-			return NoContent();
-		}
+            return NoContent();
+        }
 
-		// POST: api/Offers
-		// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-		[HttpPost]
-		public async Task<ActionResult<Offer>> PostOffer(Offer offer)
-		{
-			//  if (_context.Makes == null)
-			//  {
-			//      return Problem("Entity set 'ApplicationDbContext.Makes'  is null.");
-			//  }
-			//    _context.Makes.Add(make);
-			//    await _context.SaveChangesAsync();
-			await _unitOfWork.Offers.Insert(offer);
-			await _unitOfWork.Save(HttpContext);
+        // POST: api/Offers
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPost]
+        public async Task<ActionResult<Offer>> PostOffer(Offer offer)
+        {
+            //_context.Offers.Add(offer);
+            //await _context.SaveChangesAsync();
+            await _unitOfWork.Offers.Insert(offer);
+            await _unitOfWork.Save(HttpContext);
 
-			return CreatedAtAction("GetOffer", new { id = offer.Id }, offer);
-		}
+            return CreatedAtAction("GetOffer", new { id = offer.Id }, offer);
+        }
 
-		// DELETE: api/Offers/5
-		[HttpDelete("{id}")]
-		public async Task<IActionResult> DeleteOffer(int id)
-		{
-			//if (_context.Makes == null)
-			//{
-			//    return NotFound();
-			//}
-			//var make = await _context.Makes.FindAsync(id);
-			var offer = await _unitOfWork.Offers.Get(q => q.Id == id);
-			if (offer == null)
-			{
-				return NotFound();
-			}
+        // DELETE: api/Offers/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteOffer(int id)
+        {
+            //var offer = await _context.Offers.FindAsync(id);
+            var offer = await _unitOfWork.Offers.Get(q => q.Id == id);
+            if (offer == null)
+            {
+                return NotFound();
+            }
 
-			//_context.Makes.Remove(make);
-			//await _context.SaveChangesAsync();
-			await _unitOfWork.Offers.Delete(id);
-			await _unitOfWork.Save(HttpContext);
+            //_context.Offers.Remove(offer);
+            //await _context.SaveChangesAsync();
+            await _unitOfWork.Offers.Delete(id);
+            await _unitOfWork.Save(HttpContext);
 
-			return NoContent();
-		}
+            return NoContent();
+        }
 
-		private async Task<bool> OfferExists(int id)
-		{
-			//return (_context.Offers?.Any(e => e.Id == id)).GetValueOrDefault();
-			var offer = _unitOfWork.Offers.Get(q => q.Id == id);
-
-			return offer != null;
-		}
-	}
+        private async Task<bool> OfferExists(int id)
+        {
+            //return _context.Offers.Any(e => e.Id == id);
+            var offer = await _unitOfWork.Offers.Get(q => q.Id == id);
+            return offer != null;
+        }
+    }
 }
+

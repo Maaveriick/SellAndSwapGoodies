@@ -26,7 +26,7 @@ namespace SellAndSwapGoodies.Server.Configurations.Entities
             new Condition
             {
                 Id = 2,
-                Name = "Used",
+                Name = "Fair",
                 DateCreated = DateTime.Now,
                 DateUpdated = DateTime.Now,
                 CreatedBy = "System",
@@ -35,7 +35,7 @@ namespace SellAndSwapGoodies.Server.Configurations.Entities
             new Condition
             {
                 Id = 3,
-                Name = "Barely Used",
+                Name = "Poor",
                 DateCreated = DateTime.Now,
                 DateUpdated = DateTime.Now,
                 CreatedBy = "System",

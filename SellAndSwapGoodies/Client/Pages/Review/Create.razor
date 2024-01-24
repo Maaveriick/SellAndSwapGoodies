@@ -1,0 +1,58 @@
+﻿@page "/reviews/create/"
+@inject HttpClient _client
+@inject NavigationManager _navManager
+
+<h3 class="card-title">Create New Review</h3>
+<h4>Select User to create new Review</h4>
+<br />
+
+@if (Users == null)
+{
+    <div class="alert alert-info">Loading Users...</div>
+}
+else
+{
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                
+                <th>User</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Users)
+            {
+                <tr>
+                    <td>@user.Name</td>
+                    <td>
+                        <a href=" /reviews/createReview/@user.Id" class=" btn btn-primary">
+                            <span class="oi oi-book"></span>
+                        </a>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+}
+@*<button type="submit" class=" btn btn-success btn-block">
+        Next
+    </button>*@
+
+@code{
+    Review review = new Review();
+
+    private IList<User>? Users;
+    private DateTime _displaydate;
+
+
+    protected async override Task OnInitializedAsync()
+    {
+        Users = await _client.GetFromJsonAsync<List<User>>($"{Endpoints.UsersEndpoint}");
+        _displaydate = DateTime.Now;
+    }
+
+
+
+}

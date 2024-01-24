@@ -11,16 +11,22 @@ namespace SellAndSwapGoodies.Shared.Domain
 {
 	public class Chat:BaseDomainModel
 	{
-		public string? MessageText { get; set; }
+        [Required]
+        public string? MessageText { get; set; }
 		public DateTime ChatTimeStamp { get; set; }
-		public string? MessageUser { get; set; }
-
+        [Required]
+        public string? MessageUser { get; set; }
         public int? UserID { get; set; }
-		public virtual User ? User { get; set; }
-		public int? OfferID { get; set; }
-		public virtual Offer ? Offer { get; set; }
-		public int? ListingID { get; set; }
-		public virtual Listing ? Listing { get; set; }
+ 
+        public virtual User ? User { get; set; }
+
+        public int? OfferID { get; set; }
+ 
+        public virtual Offer ? Offer { get; set; }
+ 
+        public int? ListingID { get; set; }
+
+        public virtual Listing ? Listing { get; set; }
 
 	}
 }

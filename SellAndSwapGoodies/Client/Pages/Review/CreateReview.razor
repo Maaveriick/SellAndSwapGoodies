@@ -1,4 +1,4 @@
-﻿@page "/reviews/create/"
+﻿@page "/reviews/createReview/{id:int}"
 @inject HttpClient _client
 @inject NavigationManager _navManager
 <h3 class=" card.title"> Create New Reviews</h3>
@@ -8,20 +8,15 @@
 	<DataAnnotationsValidator />
 	<ValidationSummary />
 
+
 	<div class="form-group">
-		<label>User:</label>
+		<label> Rating: </label>
 		<div>
-			<InputSelect @bind-Value="review.UserID" class="form-control">
-				<option value="">-- Select User --</option>
-				@if (Users != null)
-				{
-					foreach (var user in Users)
-					{
-						<option value="@user.Id">@user.Name</option>
-					}
-				}
-			</InputSelect>
-			<ValidationMessage For="@(() => review.UserID)" />
+			<div>
+				<InputNumber @bind-Value="review.Rating" class="form-control">
+					<ValidationMessage For="@(() => review.Rating)" />
+				</InputNumber>
+			</div>
 		</div>
 	</div>
 
@@ -37,48 +32,34 @@
 	</div>
 
 
-	<div class="form-group">
-		<label> Rating: </label>
-		<div>
-			<div>
-				<InputNumber @bind-Value="review.Rating" class="form-control">
-					<ValidationMessage For="@(() => review.Rating)" />
-				</InputNumber>
-			</div>
-		</div>
-	</div>
-	<div class="form-group">
-		<label> DateIn: </label>
-		<div>
-			<div>
-				<InputDate @bind-Value="review.DateIn" class="form-control">
-					<ValidationMessage For="@(() => review.DateIn)" />
-				</InputDate>
-			</div>
-		</div>
-	</div>
-
-
 	<button type="submit" class="btn btn-success btn-block">
 		Create Review
 	</button>
+	<BackToList Target="reviews" />
 </EditForm>
 
 @code {
 	Review review = new Review();
 
-	private IList<Review>? Reviews;
 	private IList<User>? Users;
+	private DateTime _displaydate;
 
-	protected async override Task OnInitializedAsync()
-	{
-		Reviews = await _client.GetFromJsonAsync<List<Review>>($"{Endpoints.ReviewsEndpoint}");
-		Users = await _client.GetFromJsonAsync<List<User>>($"{Endpoints.UsersEndpoint}");
-	}
+	[Parameter] public int id { get; set; }
 
 	private async Task CreateNewReview()
 	{
+		review.UserID = id;
+		review.ReviewTime = _displaydate;
 		await _client.PostAsJsonAsync(Endpoints.ReviewsEndpoint, review);
-		_navManager.NavigateTo("/reviews");
+		_navManager.NavigateTo("/users/review/" + id.ToString());
+
+
 	}
+
+	protected async override Task OnInitializedAsync()
+	{
+		Users = await _client.GetFromJsonAsync<List<User>>($"{Endpoints.UsersEndpoint}");
+		_displaydate = DateTime.Now;
+	}
+
 }

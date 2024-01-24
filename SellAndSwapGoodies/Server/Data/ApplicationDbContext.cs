@@ -38,7 +38,6 @@ namespace SellAndSwapGoodies.Server.Data
             builder.ApplyConfiguration(new CategorySeedConfiguration());
             builder.ApplyConfiguration(new ConditionSeedConfiguration());
             builder.ApplyConfiguration(new UserSeedConfigurationA());
-            builder.ApplyConfiguration(new OfferSeedConfiguration());
         }
 
 	}

@@ -1,4 +1,5 @@
-﻿@page "/deliverystatuses/view/{id:int}"
+﻿@*
+@page "/deliverystatuses/view/{id:int}"
 @inject HttpClient _client
 @inject NavigationManager _navManager
 <h3>View</h3>
@@ -12,3 +13,4 @@
 	_client.GetFromJsonAsync<DeliveryStatus>($"{Endpoints.DeliveryStatusesEndpoint}/{id}");
 	}
 }
+*@

@@ -329,6 +329,9 @@ namespace SellAndSwapGoodies.Server.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
+                    b.Property<int>("Age")
+                        .HasColumnType("int");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
@@ -396,7 +399,8 @@ namespace SellAndSwapGoodies.Server.Migrations
                         {
                             Id = "3781efa7-66dc-47f0-860f-e506d04102e4",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2bc5ff8b-8d96-4dab-82b6-3021f6bdc4a5",
+                            Age = 0,
+                            ConcurrencyStamp = "c512fc64-2f64-4f26-af55-d68dfa97bc84",
                             Email = "admin@localhost.com",
                             EmailConfirmed = false,
                             FirstName = "Admin",
@@ -404,9 +408,9 @@ namespace SellAndSwapGoodies.Server.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@LOCALHOST.COM",
                             NormalizedUserName = "ADMIN@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAECF0TGIiUYdwdQ+BbYhcC07sCm41ilUZrau6H7Q+1bHIXG7B+32YOHO+8CSyNngBww==",
+                            PasswordHash = "AQAAAAIAAYagAAAAECS+11jLh9XKNiYrlQmKdleffTDjFAJx9W/dHHvCf1SY0bEI+K6HYXZ3C4+0UlNZiw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "8e6c280e-3f1a-403d-80a8-06c4fdee70cc",
+                            SecurityStamp = "7f35fd7d-99c3-4eef-b748-519bd1c4c035",
                             TwoFactorEnabled = false,
                             UserName = "admin@localhost.com"
                         });
@@ -444,8 +448,8 @@ namespace SellAndSwapGoodies.Server.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 24, 19, 35, 52, 712, DateTimeKind.Local).AddTicks(657),
-                            DateUpdated = new DateTime(2024, 1, 24, 19, 35, 52, 712, DateTimeKind.Local).AddTicks(658),
+                            DateCreated = new DateTime(2024, 1, 25, 4, 12, 5, 504, DateTimeKind.Local).AddTicks(2020),
+                            DateUpdated = new DateTime(2024, 1, 25, 4, 12, 5, 504, DateTimeKind.Local).AddTicks(2020),
                             Name = "Shoes",
                             UpdatedBy = "System"
                         },
@@ -453,8 +457,8 @@ namespace SellAndSwapGoodies.Server.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 24, 19, 35, 52, 712, DateTimeKind.Local).AddTicks(661),
-                            DateUpdated = new DateTime(2024, 1, 24, 19, 35, 52, 712, DateTimeKind.Local).AddTicks(661),
+                            DateCreated = new DateTime(2024, 1, 25, 4, 12, 5, 504, DateTimeKind.Local).AddTicks(2022),
+                            DateUpdated = new DateTime(2024, 1, 25, 4, 12, 5, 504, DateTimeKind.Local).AddTicks(2022),
                             Name = "Electronics",
                             UpdatedBy = "System"
                         },
@@ -462,9 +466,90 @@ namespace SellAndSwapGoodies.Server.Migrations
                         {
                             Id = 3,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 24, 19, 35, 52, 712, DateTimeKind.Local).AddTicks(663),
-                            DateUpdated = new DateTime(2024, 1, 24, 19, 35, 52, 712, DateTimeKind.Local).AddTicks(664),
-                            Name = "Toys",
+                            DateCreated = new DateTime(2024, 1, 25, 4, 12, 5, 504, DateTimeKind.Local).AddTicks(2023),
+                            DateUpdated = new DateTime(2024, 1, 25, 4, 12, 5, 504, DateTimeKind.Local).AddTicks(2024),
+                            Name = "Babies & Kids",
+                            UpdatedBy = "System"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CreatedBy = "System",
+                            DateCreated = new DateTime(2024, 1, 25, 4, 12, 5, 504, DateTimeKind.Local).AddTicks(2025),
+                            DateUpdated = new DateTime(2024, 1, 25, 4, 12, 5, 504, DateTimeKind.Local).AddTicks(2026),
+                            Name = "Men's Fashion",
+                            UpdatedBy = "System"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CreatedBy = "System",
+                            DateCreated = new DateTime(2024, 1, 25, 4, 12, 5, 504, DateTimeKind.Local).AddTicks(2027),
+                            DateUpdated = new DateTime(2024, 1, 25, 4, 12, 5, 504, DateTimeKind.Local).AddTicks(2028),
+                            Name = "Woman's Fashion",
+                            UpdatedBy = "System"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CreatedBy = "System",
+                            DateCreated = new DateTime(2024, 1, 25, 4, 12, 5, 504, DateTimeKind.Local).AddTicks(2029),
+                            DateUpdated = new DateTime(2024, 1, 25, 4, 12, 5, 504, DateTimeKind.Local).AddTicks(2030),
+                            Name = "Watches",
+                            UpdatedBy = "System"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CreatedBy = "System",
+                            DateCreated = new DateTime(2024, 1, 25, 4, 12, 5, 504, DateTimeKind.Local).AddTicks(2031),
+                            DateUpdated = new DateTime(2024, 1, 25, 4, 12, 5, 504, DateTimeKind.Local).AddTicks(2032),
+                            Name = "Furniture",
+                            UpdatedBy = "System"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CreatedBy = "System",
+                            DateCreated = new DateTime(2024, 1, 25, 4, 12, 5, 504, DateTimeKind.Local).AddTicks(2033),
+                            DateUpdated = new DateTime(2024, 1, 25, 4, 12, 5, 504, DateTimeKind.Local).AddTicks(2034),
+                            Name = "Vehicles",
+                            UpdatedBy = "System"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            CreatedBy = "System",
+                            DateCreated = new DateTime(2024, 1, 25, 4, 12, 5, 504, DateTimeKind.Local).AddTicks(2035),
+                            DateUpdated = new DateTime(2024, 1, 25, 4, 12, 5, 504, DateTimeKind.Local).AddTicks(2036),
+                            Name = "Sports Equipment",
+                            UpdatedBy = "System"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            CreatedBy = "System",
+                            DateCreated = new DateTime(2024, 1, 25, 4, 12, 5, 504, DateTimeKind.Local).AddTicks(2037),
+                            DateUpdated = new DateTime(2024, 1, 25, 4, 12, 5, 504, DateTimeKind.Local).AddTicks(2038),
+                            Name = "Pets",
+                            UpdatedBy = "System"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            CreatedBy = "System",
+                            DateCreated = new DateTime(2024, 1, 25, 4, 12, 5, 504, DateTimeKind.Local).AddTicks(2039),
+                            DateUpdated = new DateTime(2024, 1, 25, 4, 12, 5, 504, DateTimeKind.Local).AddTicks(2039),
+                            Name = "Bags",
+                            UpdatedBy = "System"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            CreatedBy = "System",
+                            DateCreated = new DateTime(2024, 1, 25, 4, 12, 5, 504, DateTimeKind.Local).AddTicks(2041),
+                            DateUpdated = new DateTime(2024, 1, 25, 4, 12, 5, 504, DateTimeKind.Local).AddTicks(2041),
+                            Name = "Luxury",
                             UpdatedBy = "System"
                         });
                 });
@@ -493,9 +578,11 @@ namespace SellAndSwapGoodies.Server.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("MessageText")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MessageUser")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("OfferID")
@@ -550,8 +637,8 @@ namespace SellAndSwapGoodies.Server.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 24, 19, 35, 52, 712, DateTimeKind.Local).AddTicks(1170),
-                            DateUpdated = new DateTime(2024, 1, 24, 19, 35, 52, 712, DateTimeKind.Local).AddTicks(1171),
+                            DateCreated = new DateTime(2024, 1, 25, 4, 12, 5, 504, DateTimeKind.Local).AddTicks(2251),
+                            DateUpdated = new DateTime(2024, 1, 25, 4, 12, 5, 504, DateTimeKind.Local).AddTicks(2252),
                             Name = "New",
                             UpdatedBy = "System"
                         },
@@ -559,18 +646,18 @@ namespace SellAndSwapGoodies.Server.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 24, 19, 35, 52, 712, DateTimeKind.Local).AddTicks(1173),
-                            DateUpdated = new DateTime(2024, 1, 24, 19, 35, 52, 712, DateTimeKind.Local).AddTicks(1174),
-                            Name = "Used",
+                            DateCreated = new DateTime(2024, 1, 25, 4, 12, 5, 504, DateTimeKind.Local).AddTicks(2253),
+                            DateUpdated = new DateTime(2024, 1, 25, 4, 12, 5, 504, DateTimeKind.Local).AddTicks(2254),
+                            Name = "Fair",
                             UpdatedBy = "System"
                         },
                         new
                         {
                             Id = 3,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 24, 19, 35, 52, 712, DateTimeKind.Local).AddTicks(1176),
-                            DateUpdated = new DateTime(2024, 1, 24, 19, 35, 52, 712, DateTimeKind.Local).AddTicks(1177),
-                            Name = "Barely Used",
+                            DateCreated = new DateTime(2024, 1, 25, 4, 12, 5, 504, DateTimeKind.Local).AddTicks(2255),
+                            DateUpdated = new DateTime(2024, 1, 25, 4, 12, 5, 504, DateTimeKind.Local).AddTicks(2256),
+                            Name = "Poor",
                             UpdatedBy = "System"
                         });
                 });
@@ -599,9 +686,11 @@ namespace SellAndSwapGoodies.Server.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<int?>("DeliveryStatusID")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<int?>("ListingID")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("UpdatedBy")
@@ -653,18 +742,36 @@ namespace SellAndSwapGoodies.Server.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 24, 19, 35, 52, 712, DateTimeKind.Local).AddTicks(305),
-                            DateUpdated = new DateTime(2024, 1, 24, 19, 35, 52, 712, DateTimeKind.Local).AddTicks(320),
-                            Status = "Ongoing",
+                            DateCreated = new DateTime(2024, 1, 25, 4, 12, 5, 504, DateTimeKind.Local).AddTicks(1787),
+                            DateUpdated = new DateTime(2024, 1, 25, 4, 12, 5, 504, DateTimeKind.Local).AddTicks(1795),
+                            Status = "Shipped",
                             UpdatedBy = "System"
                         },
                         new
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 24, 19, 35, 52, 712, DateTimeKind.Local).AddTicks(323),
-                            DateUpdated = new DateTime(2024, 1, 24, 19, 35, 52, 712, DateTimeKind.Local).AddTicks(324),
+                            DateCreated = new DateTime(2024, 1, 25, 4, 12, 5, 504, DateTimeKind.Local).AddTicks(1797),
+                            DateUpdated = new DateTime(2024, 1, 25, 4, 12, 5, 504, DateTimeKind.Local).AddTicks(1797),
                             Status = "Delivered",
+                            UpdatedBy = "System"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedBy = "System",
+                            DateCreated = new DateTime(2024, 1, 25, 4, 12, 5, 504, DateTimeKind.Local).AddTicks(1799),
+                            DateUpdated = new DateTime(2024, 1, 25, 4, 12, 5, 504, DateTimeKind.Local).AddTicks(1799),
+                            Status = "Canceled",
+                            UpdatedBy = "System"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CreatedBy = "System",
+                            DateCreated = new DateTime(2024, 1, 25, 4, 12, 5, 504, DateTimeKind.Local).AddTicks(1801),
+                            DateUpdated = new DateTime(2024, 1, 25, 4, 12, 5, 504, DateTimeKind.Local).AddTicks(1801),
+                            Status = "Pending",
                             UpdatedBy = "System"
                         });
                 });
@@ -678,9 +785,11 @@ namespace SellAndSwapGoodies.Server.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int?>("CategoryID")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<int?>("ConditionID")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("CreatedBy")
@@ -693,24 +802,29 @@ namespace SellAndSwapGoodies.Server.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("ItmPic")
                         .HasColumnType("int");
 
                     b.Property<string>("Location")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<double?>("Price")
+                        .IsRequired()
                         .HasColumnType("float");
 
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("UserID")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -762,18 +876,6 @@ namespace SellAndSwapGoodies.Server.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Offers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 24, 19, 35, 52, 712, DateTimeKind.Local).AddTicks(2170),
-                            DateUpdated = new DateTime(2024, 1, 24, 19, 35, 52, 712, DateTimeKind.Local).AddTicks(2173),
-                            ReceiverId = 2,
-                            SenderId = 1,
-                            UpdatedBy = "System"
-                        });
                 });
 
             modelBuilder.Entity("SellAndSwapGoodies.Shared.Domain.Profile", b =>
@@ -821,20 +923,19 @@ namespace SellAndSwapGoodies.Server.Migrations
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DateIn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DateOut")
-                        .HasColumnType("datetime2");
-
                     b.Property<DateTime>("DateUpdated")
                         .HasColumnType("datetime2");
 
                     b.Property<int?>("Rating")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("ReviewText")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ReviewTime")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -857,17 +958,25 @@ namespace SellAndSwapGoodies.Server.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int?>("CVV")
+                        .IsRequired()
+                        .HasColumnType("int");
+
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CreditCardExpiryName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CreditCardName")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
-                    b.Property<int?>("CreditCardNumber")
-                        .HasColumnType("int");
+                    b.Property<string>("CreditCardNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime2");
@@ -924,16 +1033,22 @@ namespace SellAndSwapGoodies.Server.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("EmailAddress")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Gender")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Password")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<int?>("ProfileID")
                         .HasColumnType("int");
@@ -953,8 +1068,8 @@ namespace SellAndSwapGoodies.Server.Migrations
                             Id = 1,
                             Age = 18,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 24, 19, 35, 52, 712, DateTimeKind.Local).AddTicks(1720),
-                            DateUpdated = new DateTime(2024, 1, 24, 19, 35, 52, 712, DateTimeKind.Local).AddTicks(1722),
+                            DateCreated = new DateTime(2024, 1, 25, 4, 12, 5, 504, DateTimeKind.Local).AddTicks(2458),
+                            DateUpdated = new DateTime(2024, 1, 25, 4, 12, 5, 504, DateTimeKind.Local).AddTicks(2458),
                             EmailAddress = "James@gmail.com",
                             Gender = "Male",
                             Name = "James",
@@ -966,8 +1081,8 @@ namespace SellAndSwapGoodies.Server.Migrations
                             Id = 2,
                             Age = 18,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 1, 24, 19, 35, 52, 712, DateTimeKind.Local).AddTicks(1727),
-                            DateUpdated = new DateTime(2024, 1, 24, 19, 35, 52, 712, DateTimeKind.Local).AddTicks(1728),
+                            DateCreated = new DateTime(2024, 1, 25, 4, 12, 5, 504, DateTimeKind.Local).AddTicks(2460),
+                            DateUpdated = new DateTime(2024, 1, 25, 4, 12, 5, 504, DateTimeKind.Local).AddTicks(2461),
                             EmailAddress = "Taylor@gmail.com",
                             Gender = "Female",
                             Name = "Taylor",
@@ -1052,11 +1167,15 @@ namespace SellAndSwapGoodies.Server.Migrations
                 {
                     b.HasOne("SellAndSwapGoodies.Shared.Domain.DeliveryStatus", "DeliveryStatus")
                         .WithMany()
-                        .HasForeignKey("DeliveryStatusID");
+                        .HasForeignKey("DeliveryStatusID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("SellAndSwapGoodies.Shared.Domain.Listing", "Listing")
                         .WithMany()
-                        .HasForeignKey("ListingID");
+                        .HasForeignKey("ListingID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("SellAndSwapGoodies.Shared.Domain.User", "User")
                         .WithMany()
@@ -1073,15 +1192,21 @@ namespace SellAndSwapGoodies.Server.Migrations
                 {
                     b.HasOne("SellAndSwapGoodies.Shared.Domain.Category", "Category")
                         .WithMany()
-                        .HasForeignKey("CategoryID");
+                        .HasForeignKey("CategoryID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("SellAndSwapGoodies.Shared.Domain.Condition", "Condition")
                         .WithMany()
-                        .HasForeignKey("ConditionID");
+                        .HasForeignKey("ConditionID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("SellAndSwapGoodies.Shared.Domain.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserID");
+                        .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Category");
 

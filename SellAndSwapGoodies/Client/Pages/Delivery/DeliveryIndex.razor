@@ -2,6 +2,9 @@
 @inject HttpClient _client
 @inject IJSRuntime js
 @attribute [Authorize]
+@inject HttpInterceptorService _interceptor
+@implements IDisposable
+@using SellAndSwapGoodies.Client.Services
 
 <h3 class=" = " card_title">Delivery</h3>"
 <br />
@@ -15,7 +18,7 @@
 }
 else
 {
-    <table class="table table-responsive">
+    <table class="table table-responsive" id="deliverysTable">
         <thead>
             <tr>
                 <th>Buyer</th>
@@ -59,6 +62,7 @@ else
 
     protected async override Task OnInitializedAsync()
     {
+        _interceptor.MonitorEvent();
         Deliverys = await _client.GetFromJsonAsync<List<Delivery>>($"{Endpoints.DeliverysEndpoint}");
     }
 
@@ -74,5 +78,14 @@ else
                 await OnInitializedAsync();
             }
         }
+    }
+    protected async override Task OnAfterRenderAsync(bool firstRender)
+    {
+        await js.InvokeVoidAsync("AddDataTable", "#deliverysTable");
+    }
+
+    public void Dispose()
+    {
+        js.InvokeVoidAsync("DataTablesDispose", "#deliverysTable");
     }
 }

@@ -26,15 +26,25 @@
 	<div class="form-group">
 		<label> Number: </label>
 			<div>
-				<InputNumber @bind-Value="transaction.CreditCardNumber" class="form-control">
+				<InputText @bind-Value="transaction.CreditCardNumber" class="form-control">
 				<ValidationMessage For="@(() => transaction.CreditCardNumber)" />
-				</InputNumber>
+				</InputText>
 			</div>
+	</div>
+
+	<div class="form-group">
+		<label> CVV: </label>
+		<div>
+			<InputNumber @bind-Value="transaction.CVV" class="form-control">
+				<ValidationMessage For="@(() => transaction.CVV)" />
+			</InputNumber>
+		</div>
 	</div>
 
 	<button type="submit" class="btn btn-success btn-block">
 		Create Transaction
 	</button>
+	<BackToList Target="transactions" />
 </EditForm>
 
 @code {

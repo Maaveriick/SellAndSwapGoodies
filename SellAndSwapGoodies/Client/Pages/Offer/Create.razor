@@ -10,10 +10,10 @@
     <ValidationSummary />
 
     <div class="form-group">
-        <label>Sender:</label>
+        <label>Buyer:</label>
         <div>
             <InputSelect @bind-Value="offer.SenderId" class="form-control">
-                <option value="">-- Select Sender --</option>
+                <option value="">-- Select Buyer --</option>
                 @if (Senders != null)
                 {
                     foreach (var sender in Senders)
@@ -27,10 +27,10 @@
     </div>
 
     <div class="form-group">
-        <label>Receiver:</label>
+        <label>Seller:</label>
         <div>
             <InputSelect @bind-Value="offer.ReceiverId" class="form-control">
-                <option value="">-- Select Receiver --</option>
+                <option value="">-- Select Seller --</option>
                 @if (Receivers != null)
                 {
                     foreach (var receiver in Receivers)
@@ -47,8 +47,7 @@
     <button type="submit" class="btn btn-success btn-block">
         Create Offer
     </button>
-
-
+    <BackToList Target="offers" />
 </EditForm>
 
 @code {
@@ -68,7 +67,7 @@
 
     private async Task CreateNewOffer()
     {
-        await _client.PostAsJsonAsync(Endpoints.DeliverysEndpoint, offer);
+        await _client.PostAsJsonAsync(Endpoints.OffersEndpoint, offer);
         _navManager.NavigateTo("/offers");
 
     }

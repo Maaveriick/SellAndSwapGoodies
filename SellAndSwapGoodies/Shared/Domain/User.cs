@@ -18,11 +18,20 @@ namespace SellAndSwapGoodies.Shared.Domain
             this.SenderOffer = new HashSet<Offer>();
             this.ReceiverOffer = new HashSet<Offer>();
         }
+        [Required]
+        [StringLength(100, MinimumLength = 2, ErrorMessage = "Name does not meet length requirements")]
         public string? Name { get; set; }
+        [Required]
         public int Age { get; set; }
-		public string? Gender { get; set; }
-		public string? EmailAddress { get; set; }
-		public string? Password { get; set; }
+        [Required]
+        public string? Gender { get; set; }
+        [Required]
+        [DataType(DataType.EmailAddress, ErrorMessage = "Email Address is not a valid email")]
+        [EmailAddress]
+        public string? EmailAddress { get; set; }
+        [Required]
+        [StringLength(100, MinimumLength = 2, ErrorMessage = "Password does not meet length requirements")]
+        public string? Password { get; set; }
 		public int? ProfileID { get; set; }
 		public virtual Profile ? Profile { get; set; }
         public virtual List<Offer>? Offers { get; set; }

@@ -12,13 +12,16 @@ namespace SellAndSwapGoodies.Shared.Domain
     {
         public DateTime DateOut { get; set; }
         public DateTime DateIn { get; set; }
+        [Required]
         public int? DeliveryStatusID { get; set; }
+
         public virtual DeliveryStatus? DeliveryStatus { get; set; }
-
         public int? UserID { get; set; }
-        public virtual User? User { get; set; }
 
+        public virtual User? User { get; set; }
+        [Required]
         public int? ListingID { get; set; }
+
         public virtual Listing? Listing { get; set; }
 
 
