@@ -16,7 +16,7 @@ namespace SellAndSwapGoodies.Server.Configurations.Entities
                 new Offer
                 {
                     Id = 1,
-                    SendId = 1,
+                    SenderId = 1,
                    ReceiverId = 2,
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,

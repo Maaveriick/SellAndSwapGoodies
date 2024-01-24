@@ -1,4 +1,5 @@
-﻿<EditForm Model="@user" OnValidSubmit="OnValidSubmit">
+﻿@*
+<EditForm Model="@user" OnValidSubmit="OnValidSubmit">
     <DataAnnotationsValidator />
     <ValidationSummary />
         <fieldset disabled="@Disabled" >
@@ -9,7 +10,7 @@
             <ValidationMessage For="@(() => user.Name)" />
         </div>
 
-        <label>Age:</label>
+        <label>Age:</label> 
         <div>
                 <InputNumber @bind-Value="@user.Age" class="form-control" />
                 <ValidationMessage For="@(() => user.Age)" />
@@ -50,3 +51,4 @@
     [Parameter] public EventCallback OnValidSubmit { get; set; }
 
 }
+*@

@@ -13,33 +13,33 @@ namespace SellAndSwapGoodies.Server.Configurations.Entities
         public void Configure(EntityTypeBuilder<User> builder)
         {
             builder.HasData(
-                new User
-                {
-                    Id = 1,
-                    Name = "Mav",
-                    Age = 20,
-                    Gender = "Male",
-                    EmailAddress = "yeemaverick68@gmail.com",
-                    Password = "1234",
-                    DateCreated = DateTime.Now,
-                    DateUpdated = DateTime.Now,
-                    CreatedBy = "System",
-                    UpdatedBy = "System"
-                },
-                new User
-                {
-                    Id = 2,
-                    Name = "Atu",
-                    Age = 19,
-                    Gender = "Male",
-                    EmailAddress = "AtuTu@gmail.com",
-                    Password = "1234",
-                    DateCreated = DateTime.Now,
-                    DateUpdated = DateTime.Now,
-                    CreatedBy = "System",
-                    UpdatedBy = "System"
-                }
-                );
+                 new User
+                 {
+                     Id = 1,
+                     Name = "James",
+                     Age = 18,
+                     Gender = "Male",
+                     EmailAddress = "James@gmail.com",
+                     Password = "1234",
+                     DateCreated = DateTime.Now,
+                     DateUpdated = DateTime.Now,
+                     CreatedBy = "System",
+                     UpdatedBy = "System"
+                 },
+                 new User
+                 {
+                     Id = 2,
+                     Name = "Taylor",
+                     Age = 18,
+                     Gender = "Female",
+                     EmailAddress = "Taylor@gmail.com",
+                     Password = "1234",
+                     DateCreated = DateTime.Now,
+                     DateUpdated = DateTime.Now,
+                     CreatedBy = "System",
+                     UpdatedBy = "System"
+                 }
+              );
 
         }
     }

@@ -293,7 +293,7 @@ namespace SellAndSwapGoodies.Server.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Age = table.Column<int>(type: "int", nullable: true),
+                    Age = table.Column<int>(type: "int", nullable: false),
                     Gender = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     EmailAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -358,7 +358,7 @@ namespace SellAndSwapGoodies.Server.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    SendId = table.Column<int>(type: "int", nullable: true),
+                    SenderId = table.Column<int>(type: "int", nullable: true),
                     ReceiverId = table.Column<int>(type: "int", nullable: true),
                     UserId = table.Column<int>(type: "int", nullable: true),
                     DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -375,8 +375,8 @@ namespace SellAndSwapGoodies.Server.Migrations
                         principalTable: "Users",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Offers_Users_SendId",
-                        column: x => x.SendId,
+                        name: "FK_Offers_Users_SenderId",
+                        column: x => x.SenderId,
                         principalTable: "Users",
                         principalColumn: "Id");
                     table.ForeignKey(
@@ -540,16 +540,16 @@ namespace SellAndSwapGoodies.Server.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "3781efa7-66dc-47f0-860f-e506d04102e4", 0, "e1e92aee-4777-4633-9de5-eaced9fd2a46", "admin@localhost.com", false, "Admin", "User", false, null, "ADMIN@LOCALHOST.COM", "ADMIN@LOCALHOST.COM", "AQAAAAIAAYagAAAAEJh9dg5OLg7hZeFI4Er+b7vU6+KocuddQWk3QnK7hk0xF8St4an1uq4bIfOpihcWUw==", null, false, "9f890a48-71dc-4638-997d-7cbfe1fda586", false, "admin@localhost.com" });
+                values: new object[] { "3781efa7-66dc-47f0-860f-e506d04102e4", 0, "2bc5ff8b-8d96-4dab-82b6-3021f6bdc4a5", "admin@localhost.com", false, "Admin", "User", false, null, "ADMIN@LOCALHOST.COM", "ADMIN@LOCALHOST.COM", "AQAAAAIAAYagAAAAECF0TGIiUYdwdQ+BbYhcC07sCm41ilUZrau6H7Q+1bHIXG7B+32YOHO+8CSyNngBww==", null, false, "8e6c280e-3f1a-403d-80a8-06c4fdee70cc", false, "admin@localhost.com" });
 
             migrationBuilder.InsertData(
                 table: "Categories",
                 columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "Name", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { 1, "System", new DateTime(2024, 1, 23, 18, 17, 44, 85, DateTimeKind.Local).AddTicks(8409), new DateTime(2024, 1, 23, 18, 17, 44, 85, DateTimeKind.Local).AddTicks(8409), "Shoes", "System" },
-                    { 2, "System", new DateTime(2024, 1, 23, 18, 17, 44, 85, DateTimeKind.Local).AddTicks(8411), new DateTime(2024, 1, 23, 18, 17, 44, 85, DateTimeKind.Local).AddTicks(8411), "Electronics", "System" },
-                    { 3, "System", new DateTime(2024, 1, 23, 18, 17, 44, 85, DateTimeKind.Local).AddTicks(8412), new DateTime(2024, 1, 23, 18, 17, 44, 85, DateTimeKind.Local).AddTicks(8413), "Toys", "System" }
+                    { 1, "System", new DateTime(2024, 1, 24, 19, 35, 52, 712, DateTimeKind.Local).AddTicks(657), new DateTime(2024, 1, 24, 19, 35, 52, 712, DateTimeKind.Local).AddTicks(658), "Shoes", "System" },
+                    { 2, "System", new DateTime(2024, 1, 24, 19, 35, 52, 712, DateTimeKind.Local).AddTicks(661), new DateTime(2024, 1, 24, 19, 35, 52, 712, DateTimeKind.Local).AddTicks(661), "Electronics", "System" },
+                    { 3, "System", new DateTime(2024, 1, 24, 19, 35, 52, 712, DateTimeKind.Local).AddTicks(663), new DateTime(2024, 1, 24, 19, 35, 52, 712, DateTimeKind.Local).AddTicks(664), "Toys", "System" }
                 });
 
             migrationBuilder.InsertData(
@@ -557,9 +557,9 @@ namespace SellAndSwapGoodies.Server.Migrations
                 columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "Name", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { 1, "System", new DateTime(2024, 1, 23, 18, 17, 44, 85, DateTimeKind.Local).AddTicks(8564), new DateTime(2024, 1, 23, 18, 17, 44, 85, DateTimeKind.Local).AddTicks(8565), "New", "System" },
-                    { 2, "System", new DateTime(2024, 1, 23, 18, 17, 44, 85, DateTimeKind.Local).AddTicks(8566), new DateTime(2024, 1, 23, 18, 17, 44, 85, DateTimeKind.Local).AddTicks(8567), "Used", "System" },
-                    { 3, "System", new DateTime(2024, 1, 23, 18, 17, 44, 85, DateTimeKind.Local).AddTicks(8568), new DateTime(2024, 1, 23, 18, 17, 44, 85, DateTimeKind.Local).AddTicks(8568), "Barely Used", "System" }
+                    { 1, "System", new DateTime(2024, 1, 24, 19, 35, 52, 712, DateTimeKind.Local).AddTicks(1170), new DateTime(2024, 1, 24, 19, 35, 52, 712, DateTimeKind.Local).AddTicks(1171), "New", "System" },
+                    { 2, "System", new DateTime(2024, 1, 24, 19, 35, 52, 712, DateTimeKind.Local).AddTicks(1173), new DateTime(2024, 1, 24, 19, 35, 52, 712, DateTimeKind.Local).AddTicks(1174), "Used", "System" },
+                    { 3, "System", new DateTime(2024, 1, 24, 19, 35, 52, 712, DateTimeKind.Local).AddTicks(1176), new DateTime(2024, 1, 24, 19, 35, 52, 712, DateTimeKind.Local).AddTicks(1177), "Barely Used", "System" }
                 });
 
             migrationBuilder.InsertData(
@@ -567,8 +567,8 @@ namespace SellAndSwapGoodies.Server.Migrations
                 columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "Status", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { 1, "System", new DateTime(2024, 1, 23, 18, 17, 44, 85, DateTimeKind.Local).AddTicks(8174), new DateTime(2024, 1, 23, 18, 17, 44, 85, DateTimeKind.Local).AddTicks(8194), "Ongoing", "System" },
-                    { 2, "System", new DateTime(2024, 1, 23, 18, 17, 44, 85, DateTimeKind.Local).AddTicks(8197), new DateTime(2024, 1, 23, 18, 17, 44, 85, DateTimeKind.Local).AddTicks(8198), "Delivered", "System" }
+                    { 1, "System", new DateTime(2024, 1, 24, 19, 35, 52, 712, DateTimeKind.Local).AddTicks(305), new DateTime(2024, 1, 24, 19, 35, 52, 712, DateTimeKind.Local).AddTicks(320), "Ongoing", "System" },
+                    { 2, "System", new DateTime(2024, 1, 24, 19, 35, 52, 712, DateTimeKind.Local).AddTicks(323), new DateTime(2024, 1, 24, 19, 35, 52, 712, DateTimeKind.Local).AddTicks(324), "Delivered", "System" }
                 });
 
             migrationBuilder.InsertData(
@@ -576,8 +576,8 @@ namespace SellAndSwapGoodies.Server.Migrations
                 columns: new[] { "Id", "Age", "CreatedBy", "DateCreated", "DateUpdated", "EmailAddress", "Gender", "Name", "Password", "ProfileID", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { 1, 20, "System", new DateTime(2024, 1, 23, 18, 17, 44, 85, DateTimeKind.Local).AddTicks(8857), new DateTime(2024, 1, 23, 18, 17, 44, 85, DateTimeKind.Local).AddTicks(8858), "yeemaverick68@gmail.com", "Male", "Mav", "1234", null, "System" },
-                    { 2, 19, "System", new DateTime(2024, 1, 23, 18, 17, 44, 85, DateTimeKind.Local).AddTicks(8860), new DateTime(2024, 1, 23, 18, 17, 44, 85, DateTimeKind.Local).AddTicks(8860), "AtuTu@gmail.com", "Male", "Atu", "1234", null, "System" }
+                    { 1, 18, "System", new DateTime(2024, 1, 24, 19, 35, 52, 712, DateTimeKind.Local).AddTicks(1720), new DateTime(2024, 1, 24, 19, 35, 52, 712, DateTimeKind.Local).AddTicks(1722), "James@gmail.com", "Male", "James", "1234", null, "System" },
+                    { 2, 18, "System", new DateTime(2024, 1, 24, 19, 35, 52, 712, DateTimeKind.Local).AddTicks(1727), new DateTime(2024, 1, 24, 19, 35, 52, 712, DateTimeKind.Local).AddTicks(1728), "Taylor@gmail.com", "Female", "Taylor", "1234", null, "System" }
                 });
 
             migrationBuilder.InsertData(
@@ -587,8 +587,8 @@ namespace SellAndSwapGoodies.Server.Migrations
 
             migrationBuilder.InsertData(
                 table: "Offers",
-                columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "ReceiverId", "SendId", "UpdatedBy", "UserId" },
-                values: new object[] { 1, "System", new DateTime(2024, 1, 23, 18, 17, 44, 85, DateTimeKind.Local).AddTicks(9058), new DateTime(2024, 1, 23, 18, 17, 44, 85, DateTimeKind.Local).AddTicks(9059), 2, 1, "System", null });
+                columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "ReceiverId", "SenderId", "UpdatedBy", "UserId" },
+                values: new object[] { 1, "System", new DateTime(2024, 1, 24, 19, 35, 52, 712, DateTimeKind.Local).AddTicks(2170), new DateTime(2024, 1, 24, 19, 35, 52, 712, DateTimeKind.Local).AddTicks(2173), 2, 1, "System", null });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -696,9 +696,9 @@ namespace SellAndSwapGoodies.Server.Migrations
                 column: "ReceiverId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Offers_SendId",
+                name: "IX_Offers_SenderId",
                 table: "Offers",
-                column: "SendId");
+                column: "SenderId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Offers_UserId",

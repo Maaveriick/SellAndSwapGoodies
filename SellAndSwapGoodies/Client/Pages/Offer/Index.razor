@@ -49,7 +49,7 @@ else
 }
 
 @code {
-    private List<Offer> Offers;
+    private List<Offer>? Offers;
     private IList<User>? Senders;
     private IList<User>? Receivers;
     protected override async Task OnInitializedAsync()
@@ -61,12 +61,16 @@ else
 
     private async Task Delete(int offerId)
     {
-        var offer = Offers.First(q => q.Id == offerId);
-        var confirm = await js.InvokeAsync<bool>("confirm", $"Do you want to delete {offer.Sender.Name}?");
-        if (confirm)
+        if (Offers != null)
         {
-            await _client.DeleteAsync($"{Endpoints.OffersEndpoint}/{offerId}");
-            await OnInitializedAsync();
+            var offer = Offers.First(q => q.Id == offerId);
+            var confirm = await js.InvokeAsync<bool>("confirm", $"Do you want to delete {offer.Sender.Name}?");
+
+            if (confirm)
+            {
+                await _client.DeleteAsync($"{Endpoints.OffersEndpoint}/{offerId}");
+                await OnInitializedAsync();
+            }
         }
     }
 

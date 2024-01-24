@@ -12,7 +12,7 @@
     <div class="form-group">
         <label>Sender:</label>
         <div>
-            <InputSelect @bind-Value="offer.SendId" class="form-control">
+            <InputSelect @bind-Value="offer.SenderId" class="form-control">
                 <option value="">-- Select Sender --</option>
                 @if (Senders != null)
                 {
@@ -22,7 +22,7 @@
                     }
                 }
             </InputSelect>
-            <ValidationMessage For="@(() => offer.SendId)" />
+            <ValidationMessage For="@(() => offer.SenderId)" />
         </div>
     </div>
 
