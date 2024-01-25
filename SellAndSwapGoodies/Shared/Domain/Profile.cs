@@ -8,6 +8,6 @@ namespace SellAndSwapGoodies.Shared.Domain
 	public class Profile : BaseDomainModel
 	{
 		public string? ProfileBio { get; set; }
-		public int? ProfilePhoto { get; set; }
+		public string? ProfilePhoto { get; set; }
 	}
 }

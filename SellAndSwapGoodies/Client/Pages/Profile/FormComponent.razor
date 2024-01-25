@@ -9,6 +9,16 @@
             <ValidationMessage For="@(() => profile.ProfileBio)" />
         </div>
     </div>
+        <div class="form-group">
+            <label> Picture: </label>
+            <div>
+                <div>
+                    <InputText @bind-Value="profile.ProfilePhoto" class="form-control">
+                        <ValidationMessage For="@(() => profile.ProfilePhoto)" />
+                    </InputText>
+                </div>
+            </div>
+        </div>
     </fieldset>
     @if(!Disabled)
     {

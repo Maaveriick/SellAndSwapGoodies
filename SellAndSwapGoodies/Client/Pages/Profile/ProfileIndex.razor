@@ -22,6 +22,7 @@ else
         <thead>
             <tr>
                 <th>Name</th>
+                <th>ProfilePicture</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -30,6 +31,7 @@ else
             {
                 <tr>
                     <td>@profile.Id</td>
+                    <td><img src="@profile.ProfilePhoto" alt="" /></td>
                     <td>
                         <a href="profiles/view/@profile.Id" class="btn btn-primary">
                             <span class="oi oi-book"></span>

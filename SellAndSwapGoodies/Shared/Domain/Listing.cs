@@ -17,7 +17,7 @@ namespace SellAndSwapGoodies.Shared.Domain
 		public string? Description { get; set; }
 		[Required]
 		public string? Location { get; set; }
-		public int? ItmPic { get; set; }
+		public string? ItmPic { get; set; }
 		[Required]
 		public int? CategoryID { get; set; }
 

@@ -23,6 +23,7 @@ else
             <tr>
                 <th>Seller</th>
                 <th>Item</th>
+                <th>ItmPic</th>
                 <th>Category</th>
                 <th>Location</th>
                 <th>Price</th>
@@ -37,6 +38,7 @@ else
                 <tr>
                     <td>@listing.User?.Name</td>
                     <td>@listing.Name</td>
+                    <td><img src = "@listing.ItmPic" alt="" /></td>
                     <td>@listing.Category?.Name</td>
                     <td>@listing.Location</td>
                     <td>@listing.Price</td>
