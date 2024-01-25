@@ -15,7 +15,6 @@ namespace SellAndSwapGoodies.Server.IRepository
 		IGenericRepository<DeliveryStatus> DeliveryStatuses { get; }
 		IGenericRepository<Listing> Listings { get; }
 		IGenericRepository<Offer> Offers { get; }
-		IGenericRepository<Profile> Profiles { get; }
 		IGenericRepository<Review> Reviews { get; }
 		IGenericRepository<Transaction> Transactions { get; }
 		IGenericRepository<User> Users { get; }

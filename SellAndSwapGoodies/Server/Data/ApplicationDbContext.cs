@@ -23,7 +23,6 @@ namespace SellAndSwapGoodies.Server.Data
         public DbSet<User> Users { get; set; }  
         public DbSet<Offer> Offers { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
-        public DbSet<Profile> Profiles { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<DeliveryStatus> DeliveryStatuses { get; set;}
         public DbSet<Condition> Conditions { get; set; }

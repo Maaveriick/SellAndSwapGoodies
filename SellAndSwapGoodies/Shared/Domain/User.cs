@@ -32,8 +32,7 @@ namespace SellAndSwapGoodies.Shared.Domain
         [Required]
         [StringLength(100, MinimumLength = 2, ErrorMessage = "Password does not meet length requirements")]
         public string? Password { get; set; }
-		public int? ProfileID { get; set; }
-		public virtual Profile ? Profile { get; set; }
+		public string? ProfilePicture {  get; set; }    
         public virtual List<Offer>? Offers { get; set; }
 
 		[InverseProperty("Sender")]

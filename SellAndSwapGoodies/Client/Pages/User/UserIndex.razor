@@ -24,6 +24,7 @@ else
     <table class="table table-responsive" id="usersTable">
         <thead>
             <tr>
+                <th>ProfilePicture</th>
                 <th>Name</th>
                 <th>Age</th>
                 <th>Gender</th>
@@ -34,6 +35,7 @@ else
             @foreach (var user in Users)
             {
                 <tr>
+                    <td><img src="@user.ProfilePicture" alt="" /></td>
                     <td>@user.Name</td>
                     <td>@user.Age</td>
                     <td>@user.Gender</td>

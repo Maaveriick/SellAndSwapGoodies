@@ -22,7 +22,6 @@ namespace SellAndSwapGoodies.Server.Repository
 		private IGenericRepository<DeliveryStatus> _deliverystatuses;
 		private IGenericRepository<Listing> _listings;
 		private IGenericRepository<Offer> _offers;
-		private IGenericRepository<Profile> _profiles;
 		private IGenericRepository<Review> _reviews;
 		private IGenericRepository<Transaction> _transactions;
 		private IGenericRepository<User> _users;
@@ -47,8 +46,6 @@ namespace SellAndSwapGoodies.Server.Repository
 			=> _listings ??= new GenericRepository<Listing>(_context);
 		public IGenericRepository<Offer> Offers
 			=> _offers ??= new GenericRepository<Offer>(_context);
-		public IGenericRepository<Profile> Profiles
-			=> _profiles ??= new GenericRepository<Profile>(_context);
 		public IGenericRepository<Review> Reviews
 			=> _reviews ??= new GenericRepository<Review>(_context);
 		public IGenericRepository<Transaction> Transactions
