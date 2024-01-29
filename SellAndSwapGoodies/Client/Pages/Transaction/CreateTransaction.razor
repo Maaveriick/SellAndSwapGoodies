@@ -26,9 +26,9 @@
 	<div class="form-group">
 		<label> Number: </label>
 			<div>
-				<InputText @bind-Value="transaction.CreditCardNumber" class="form-control">
+				<InputNumber @bind-Value="transaction.CreditCardNumber" class="form-control">
 				<ValidationMessage For="@(() => transaction.CreditCardNumber)" />
-				</InputText>
+				</InputNumber>
 			</div>
 	</div>
 

@@ -9,7 +9,7 @@
 <h3 class="card-title">Users</h3>
 
 <a href="/users/create" class="btn btn-secondary">
-    <span class="oi oi-plus"></span>
+    <i class="bi bi-person-plus-fill"></i>
     Create New User
 </a>
 <br />
@@ -35,7 +35,7 @@ else
             @foreach (var user in Users)
             {
                 <tr>
-                    <td><img src="@user.ProfilePicture" alt="" /></td>
+                    <td><img src="@user.ProfilePicture" alt="" style="width: 200px; height: 150px;" /></td>
                     <td>@user.Name</td>
                     <td>@user.Age</td>
                     <td>@user.Gender</td>

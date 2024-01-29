@@ -13,9 +13,14 @@
 		<label> Rating: </label>
 		<div>
 			<div>
-				<InputNumber @bind-Value="review.Rating" class="form-control">
-					<ValidationMessage For="@(() => review.Rating)" />
-				</InputNumber>
+				<InputSelect @bind-Value="review.Rating" class="form-control">
+					<option value="">-- Select Rating --</option>
+					<option value="1"> &#9733;</option>
+					<option value="2"> &#9733;&#9733;</option>
+					<option value="3"> &#9733;&#9733;&#9733;</option>
+					<option value="4"> &#9733;&#9733;&#9733;&#9733;</option>
+					<option value="5"> &#9733;&#9733;&#9733;&#9733;&#9733;</option>
+				</InputSelect>
 			</div>
 		</div>
 	</div>

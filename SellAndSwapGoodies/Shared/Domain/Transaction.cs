@@ -17,7 +17,7 @@ namespace SellAndSwapGoodies.Shared.Domain
 		public string? CreditCardExpiryName { get; set; }
         [Required(ErrorMessage = "Credit card number is required")]
         [RegularExpression(@"^\d{16}$", ErrorMessage = "Credit card number must be a 16-digit numeric value")]
-        public string? CreditCardNumber { get; set; }
+        public long? CreditCardNumber { get; set; }
         [Required(ErrorMessage = "CVV is required")]
         [Range(100, 999, ErrorMessage = "CVV must be a 3-digit number")]
         public int? CVV { get; set; }

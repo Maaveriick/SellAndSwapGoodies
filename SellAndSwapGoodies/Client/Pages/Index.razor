@@ -1,9 +1,33 @@
 ﻿@page "/"
 
-<PageTitle>Index</PageTitle>
+<div class="title">
+    <h1>Welcome to Hoon LLC!</h1>
+</div>
 
-<h1>Hey There!</h1>
+<div class="tagline">
+    <h2>Experience the Magic of Hoon LLC Carousels!</h2>
+</div>
 
-Welcome to Hoon LLC.
+<div class="LoginPage">
+    <button>
+        <NavLink class="nav-link" href="authentication/profile" Match="NavLinkMatch.All">
+            Log in or create an account here!
+        </NavLink>
+    </button>
+</div>
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+<div class="carousel-container">
+    <button class="explore-button">
+        <NavLink class="nav-link" href="listings" Match="NavLinkMatch.All">
+            Explore Items
+        </NavLink>
+    </button>
+</div>
+
+
+<div class="testimonials">
+    <blockquote>
+        "Hoon LLC's carousels brought joy to our events! Amazing craftsmanship and delightful designs."
+        <cite>— Happy Customer</cite>
+    </blockquote>
+</div>

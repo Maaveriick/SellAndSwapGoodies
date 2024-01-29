@@ -9,8 +9,8 @@
 <h3 class=" = " card_title">Transactions</h3>"
 <br />
 <a href="/transactions/create" class="btn btn-secondary">
-    <span class="oi oi-plus"></span>
-    Create New Transaction
+    <i class="bi bi-credit-card"></i>
+    Create Credit Card
 </a>
 @if (Transactions == null)
 {
@@ -42,7 +42,7 @@ else
                             <span class="oi oi-pencil"></span>
                         </a>
                         <button class="btn btn-danger" @onclick="@(()=>Delete(transaction.Id))">
-                            <span class="oi oi-delete"></span>"
+                            <span class="oi oi-delete"></span>
                         </button>
                     </td>
                 </tr>

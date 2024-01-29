@@ -30,7 +30,12 @@
 
         <div class="form-group">
             <label>Message: </label>
-            <div>
+            <div class="input-group">
+                <!-- Add an input group to include the icon -->
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="bi bi-chat-dots-fill"></i></span>
+                </div>
+                <!-- InputText with the icon -->
                 <InputText @bind-Value="@chat.MessageText" class="form-control" />
                 <ValidationMessage For="@(() => chat.MessageText)" />
             </div>

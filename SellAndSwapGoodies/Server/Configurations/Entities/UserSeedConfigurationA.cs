@@ -17,7 +17,7 @@ namespace SellAndSwapGoodies.Server.Configurations.Entities
                  {
                      Id = 1,
                      Name = "James",
-                     Age = 18,
+                     Age = 39,
                      Gender = "Male",
                      EmailAddress = "James@gmail.com",
                      Password = "1234",
@@ -29,10 +29,10 @@ namespace SellAndSwapGoodies.Server.Configurations.Entities
                  new User
                  {
                      Id = 2,
-                     Name = "Taylor",
-                     Age = 18,
-                     Gender = "Female",
-                     EmailAddress = "Taylor@gmail.com",
+                     Name = "Curry",
+                     Age = 35,
+                     Gender = "Male",
+                     EmailAddress = "Curry@gmail.com",
                      Password = "1234",
                      DateCreated = DateTime.Now,
                      DateUpdated = DateTime.Now,
