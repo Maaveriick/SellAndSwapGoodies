@@ -35,7 +35,11 @@ else
             @foreach (var user in Users)
             {
                 <tr>
-                    <td><img src="@user.ProfilePicture" alt="" style="width: 200px; height: 150px;" /></td>
+                    <td>
+                        <div style="width: 200px; height: 200px; overflow: hidden; border-radius: 50%; border: 2px solid #ccc;">
+                            <img src="@user.ProfilePicture" alt="" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;" />
+                        </div>
+                    </td>
                     <td>@user.Name</td>
                     <td>@user.Age</td>
                     <td>@user.Gender</td>
