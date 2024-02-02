@@ -36,13 +36,10 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<label> ItmPic: </label>
+		<label>ItmPic:</label>
 		<div>
-			<div>
-				<InputText @bind-Value="listing.ItmPic" class="form-control">
-					<ValidationMessage For="@(() => listing.ItmPic)" />
-				</InputText>
-			</div>
+			<img src="@listing.ItmPic" style="width: 250px; height: 250px;"> <br /> <br />
+			<InputFile OnChange="@OnInputFileChanged"></InputFile>
 		</div>
 	</div>
 
@@ -142,4 +139,15 @@
 		await _client.PostAsJsonAsync(Endpoints.ListingsEndpoint, listing);
 		_navManager.NavigateTo("/listings");
 	}
+	private async Task OnInputFileChanged(InputFileChangeEventArgs inputFileChangeEvent)
+	{
+		var file = inputFileChangeEvent.File;
+
+		var buffer = new byte[file.Size];
+		await file.OpenReadStream().ReadAsync(buffer);
+
+		listing.ItmPic = $"data:image/png;base64,{Convert.ToBase64String(buffer)}";
+	}
+
+}
 }

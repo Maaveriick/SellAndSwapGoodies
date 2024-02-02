@@ -31,13 +31,10 @@
             </div>
         </div>
         <div class="form-group">
-            <label> ItmPic: </label>
+            <label>ItmPic:</label>
             <div>
-                <div>
-                    <InputText @bind-Value="listing.ItmPic" class="form-control">
-                        <ValidationMessage For="@(() => listing.ItmPic)" />
-                    </InputText>
-                </div>
+                <img src="@listing.ItmPic" style="width: 250px; height: 250px;"> <br /> <br />
+                <InputFile OnChange="@OnInputFileChanged"></InputFile>
             </div>
         </div>
 
@@ -131,5 +128,14 @@
         Users = await _client.GetFromJsonAsync<List<User>>($"{Endpoints.UsersEndpoint}");
         Conditions = await _client.GetFromJsonAsync<List<Condition>>($"{Endpoints.ConditionsEndpoint}");
         Categories = await _client.GetFromJsonAsync<List<Category>>($"{Endpoints.CategoriesEndpoint}");
+    }
+    private async Task OnInputFileChanged(InputFileChangeEventArgs inputFileChangeEvent)
+    {
+        var file = inputFileChangeEvent.File;
+
+        var buffer = new byte[file.Size];
+        await file.OpenReadStream().ReadAsync(buffer);
+
+        listing.ItmPic = $"data:image/png;base64,{Convert.ToBase64String(buffer)}";
     }
 }
