@@ -4,7 +4,7 @@
 @attribute [Authorize]
 
 
-<h2>Review</h2>
+<h3>Reviews</h3>
 
 <a href="/reviews/createReview/@id" class="btn btn-secondary">
     <span class="oi oi-plus"></span>
@@ -19,27 +19,43 @@
 }
 else
 {
-    <table class="table table-responsive">
-        <thead>
-            <tr>
-                <th>User</th>
-                <th>Review Rating</th>
-                <th>Review</th>
-                <th>Timestamp</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var review in Reviews)
-            {
-                if (@review.UserID == id)
+    var userReviews = Reviews.Where(r => r.UserID == id).ToList();
+    if (userReviews.Any())
+    {
+        var averageRating = userReviews.Average(ur => ur.Rating);
+        <div style="display: flex; align-items: center;">
+            <img src="@userReviews.FirstOrDefault()?.User?.ProfilePicture" alt="" style="width: 70px; height: 70px; object-fit: cover; border-radius: 50%;" />
+            <div style="margin-left: 10px;">
+                <div style="display: flex; align-items: center;">
+                    <span>Average Rating:</span>
+                    <span style="font-weight: bold;">@averageRating.ToString("F2")</span>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-warning">No reviews found for this user.</div>
+    }
+
+
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th>Review Rating</th>
+                    <th>Review</th>
+                    <th>Timestamp</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var review in Reviews.Where(r => r.UserID == id))
                 {
                     <tr>
-                        <td>@review.User.Name</td>
                         <td>
                             @for (int i = 0; i < review.Rating; i++)
                             {
-                                 <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
                             }
                         </td>
                         <td>@review.ReviewText</td>
@@ -57,12 +73,9 @@ else
                         </td>
                     </tr>
                 }
-
-            }
-
-        </tbody>
-    </table>
-}
+            </tbody>
+        </table>
+    }
 
 @code {
     [Parameter] public int id { get; set; }
@@ -72,6 +85,32 @@ else
     protected async override Task OnInitializedAsync()
     {
         Reviews = await _client.GetFromJsonAsync<List<Review>>($"{Endpoints.ReviewsEndpoint}");
+        Users = await _client.GetFromJsonAsync<List<User>>($"{Endpoints.UsersEndpoint}");
+
+        if (Reviews != null && Reviews.Any(u => u.Id == id))
+        {
+            var review = Reviews.First(u => u.Id == id);
+            review.AverageRating = await CalculateAverageRating(review.Id);
+            StateHasChanged();
+        }
+    }
+    private async Task<double> CalculateAverageRating(int userId)
+    {
+        try
+        {
+            var userReviews = Reviews?.Where(r => r.UserID == userId).ToList();
+            if (userReviews?.Any() == true)
+            {
+                userReviews.ForEach(r => r.AverageRating = userReviews.Average(ur => ur.Rating));
+                Console.WriteLine($"userId: {userId}, userReviews: {userReviews?.Count}, averageRating: {userReviews.Average(ur => ur.Rating)}");
+            }
+            return userReviews?.Average(ur => ur.Rating) ?? 0;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error calculating average rating: {ex.Message}");
+            return 0;
+        }
     }
 
     async Task Delete(int reviewId)
@@ -84,5 +123,4 @@ else
             await OnInitializedAsync();
         }
     }
-
 }

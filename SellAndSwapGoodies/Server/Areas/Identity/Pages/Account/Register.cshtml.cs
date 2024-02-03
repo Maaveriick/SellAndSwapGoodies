@@ -83,11 +83,8 @@ namespace SellAndSwapGoodies.Server.Areas.Identity.Pages.Account
             [Display(Name = "Email")]
             public string Email { get; set; }
             [Required]
-            [Display(Name = "First Name")]
-            public string FirstName { get; set; }
-            [Required]
-            [Display(Name = "Last Name")]
-            public string LastName { get; set; }
+            [Display(Name = "Name")]
+            public string Name { get; set; }
 
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
