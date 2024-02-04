@@ -20,6 +20,12 @@
                 <InputNumber @bind-Value="@transaction.CreditCardNumber" class="form-control" />
                 <ValidationMessage For="@(() => transaction.CreditCardNumber)" />
         </div>
+                <label> CVV: </label>
+                <div>
+                    <InputNumber @bind-Value="transaction.CVV" class="form-control">
+                        <ValidationMessage For="@(() => transaction.CVV)" />
+                    </InputNumber>
+                </div>
     </div>
     </fieldset>
     @if (!Disabled)

@@ -400,7 +400,7 @@ namespace SellAndSwapGoodies.Server.Migrations
                             Id = "3781efa7-66dc-47f0-860f-e506d04102e4",
                             AccessFailedCount = 0,
                             Age = 0,
-                            ConcurrencyStamp = "5864c047-a023-437e-9fe9-8bdf613140dd",
+                            ConcurrencyStamp = "cea71b40-afc6-4bd7-8175-d8be715e75b3",
                             Email = "admin@localhost.com",
                             EmailConfirmed = false,
                             FirstName = "Admin",
@@ -408,9 +408,9 @@ namespace SellAndSwapGoodies.Server.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@LOCALHOST.COM",
                             NormalizedUserName = "ADMIN@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEPfMxEwkutT0QU67I/N0Q4G56/LFXIQSA9oydZhaX+c54UMtHguB9TXqK4kakA8jFg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEN0xIVm3beeXYNg7dbV/e5w7LQ8M1g8S7kPBAbVExb+xRSLd6hzi12MzNplz2KDDcA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "101c3fd2-d97e-4e69-bf9b-02a370040072",
+                            SecurityStamp = "da2b673d-2787-4e22-b2eb-ce7663140b0b",
                             TwoFactorEnabled = false,
                             UserName = "admin@localhost.com"
                         });
@@ -448,8 +448,8 @@ namespace SellAndSwapGoodies.Server.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 3, 21, 31, 57, 626, DateTimeKind.Local).AddTicks(7957),
-                            DateUpdated = new DateTime(2024, 2, 3, 21, 31, 57, 626, DateTimeKind.Local).AddTicks(7958),
+                            DateCreated = new DateTime(2024, 2, 4, 23, 14, 39, 317, DateTimeKind.Local).AddTicks(8050),
+                            DateUpdated = new DateTime(2024, 2, 4, 23, 14, 39, 317, DateTimeKind.Local).AddTicks(8051),
                             Name = "Shoes",
                             UpdatedBy = "System"
                         },
@@ -457,8 +457,8 @@ namespace SellAndSwapGoodies.Server.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 3, 21, 31, 57, 626, DateTimeKind.Local).AddTicks(7960),
-                            DateUpdated = new DateTime(2024, 2, 3, 21, 31, 57, 626, DateTimeKind.Local).AddTicks(7960),
+                            DateCreated = new DateTime(2024, 2, 4, 23, 14, 39, 317, DateTimeKind.Local).AddTicks(8052),
+                            DateUpdated = new DateTime(2024, 2, 4, 23, 14, 39, 317, DateTimeKind.Local).AddTicks(8052),
                             Name = "Electronics",
                             UpdatedBy = "System"
                         },
@@ -466,8 +466,8 @@ namespace SellAndSwapGoodies.Server.Migrations
                         {
                             Id = 3,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 3, 21, 31, 57, 626, DateTimeKind.Local).AddTicks(7962),
-                            DateUpdated = new DateTime(2024, 2, 3, 21, 31, 57, 626, DateTimeKind.Local).AddTicks(7962),
+                            DateCreated = new DateTime(2024, 2, 4, 23, 14, 39, 317, DateTimeKind.Local).AddTicks(8054),
+                            DateUpdated = new DateTime(2024, 2, 4, 23, 14, 39, 317, DateTimeKind.Local).AddTicks(8054),
                             Name = "Babies & Kids",
                             UpdatedBy = "System"
                         },
@@ -475,8 +475,8 @@ namespace SellAndSwapGoodies.Server.Migrations
                         {
                             Id = 4,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 3, 21, 31, 57, 626, DateTimeKind.Local).AddTicks(7963),
-                            DateUpdated = new DateTime(2024, 2, 3, 21, 31, 57, 626, DateTimeKind.Local).AddTicks(7964),
+                            DateCreated = new DateTime(2024, 2, 4, 23, 14, 39, 317, DateTimeKind.Local).AddTicks(8055),
+                            DateUpdated = new DateTime(2024, 2, 4, 23, 14, 39, 317, DateTimeKind.Local).AddTicks(8056),
                             Name = "Men's Fashion",
                             UpdatedBy = "System"
                         },
@@ -484,8 +484,8 @@ namespace SellAndSwapGoodies.Server.Migrations
                         {
                             Id = 5,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 3, 21, 31, 57, 626, DateTimeKind.Local).AddTicks(7965),
-                            DateUpdated = new DateTime(2024, 2, 3, 21, 31, 57, 626, DateTimeKind.Local).AddTicks(7966),
+                            DateCreated = new DateTime(2024, 2, 4, 23, 14, 39, 317, DateTimeKind.Local).AddTicks(8059),
+                            DateUpdated = new DateTime(2024, 2, 4, 23, 14, 39, 317, DateTimeKind.Local).AddTicks(8059),
                             Name = "Woman's Fashion",
                             UpdatedBy = "System"
                         },
@@ -493,8 +493,8 @@ namespace SellAndSwapGoodies.Server.Migrations
                         {
                             Id = 6,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 3, 21, 31, 57, 626, DateTimeKind.Local).AddTicks(7967),
-                            DateUpdated = new DateTime(2024, 2, 3, 21, 31, 57, 626, DateTimeKind.Local).AddTicks(7968),
+                            DateCreated = new DateTime(2024, 2, 4, 23, 14, 39, 317, DateTimeKind.Local).AddTicks(8061),
+                            DateUpdated = new DateTime(2024, 2, 4, 23, 14, 39, 317, DateTimeKind.Local).AddTicks(8061),
                             Name = "Watches",
                             UpdatedBy = "System"
                         },
@@ -502,8 +502,8 @@ namespace SellAndSwapGoodies.Server.Migrations
                         {
                             Id = 7,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 3, 21, 31, 57, 626, DateTimeKind.Local).AddTicks(7969),
-                            DateUpdated = new DateTime(2024, 2, 3, 21, 31, 57, 626, DateTimeKind.Local).AddTicks(7970),
+                            DateCreated = new DateTime(2024, 2, 4, 23, 14, 39, 317, DateTimeKind.Local).AddTicks(8062),
+                            DateUpdated = new DateTime(2024, 2, 4, 23, 14, 39, 317, DateTimeKind.Local).AddTicks(8063),
                             Name = "Furniture",
                             UpdatedBy = "System"
                         },
@@ -511,8 +511,8 @@ namespace SellAndSwapGoodies.Server.Migrations
                         {
                             Id = 8,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 3, 21, 31, 57, 626, DateTimeKind.Local).AddTicks(7971),
-                            DateUpdated = new DateTime(2024, 2, 3, 21, 31, 57, 626, DateTimeKind.Local).AddTicks(7971),
+                            DateCreated = new DateTime(2024, 2, 4, 23, 14, 39, 317, DateTimeKind.Local).AddTicks(8064),
+                            DateUpdated = new DateTime(2024, 2, 4, 23, 14, 39, 317, DateTimeKind.Local).AddTicks(8064),
                             Name = "Vehicles",
                             UpdatedBy = "System"
                         },
@@ -520,8 +520,8 @@ namespace SellAndSwapGoodies.Server.Migrations
                         {
                             Id = 9,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 3, 21, 31, 57, 626, DateTimeKind.Local).AddTicks(7973),
-                            DateUpdated = new DateTime(2024, 2, 3, 21, 31, 57, 626, DateTimeKind.Local).AddTicks(7973),
+                            DateCreated = new DateTime(2024, 2, 4, 23, 14, 39, 317, DateTimeKind.Local).AddTicks(8066),
+                            DateUpdated = new DateTime(2024, 2, 4, 23, 14, 39, 317, DateTimeKind.Local).AddTicks(8066),
                             Name = "Sports Equipment",
                             UpdatedBy = "System"
                         },
@@ -529,8 +529,8 @@ namespace SellAndSwapGoodies.Server.Migrations
                         {
                             Id = 10,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 3, 21, 31, 57, 626, DateTimeKind.Local).AddTicks(7974),
-                            DateUpdated = new DateTime(2024, 2, 3, 21, 31, 57, 626, DateTimeKind.Local).AddTicks(7975),
+                            DateCreated = new DateTime(2024, 2, 4, 23, 14, 39, 317, DateTimeKind.Local).AddTicks(8067),
+                            DateUpdated = new DateTime(2024, 2, 4, 23, 14, 39, 317, DateTimeKind.Local).AddTicks(8068),
                             Name = "Pets",
                             UpdatedBy = "System"
                         },
@@ -538,8 +538,8 @@ namespace SellAndSwapGoodies.Server.Migrations
                         {
                             Id = 11,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 3, 21, 31, 57, 626, DateTimeKind.Local).AddTicks(7976),
-                            DateUpdated = new DateTime(2024, 2, 3, 21, 31, 57, 626, DateTimeKind.Local).AddTicks(7977),
+                            DateCreated = new DateTime(2024, 2, 4, 23, 14, 39, 317, DateTimeKind.Local).AddTicks(8069),
+                            DateUpdated = new DateTime(2024, 2, 4, 23, 14, 39, 317, DateTimeKind.Local).AddTicks(8070),
                             Name = "Bags",
                             UpdatedBy = "System"
                         },
@@ -547,8 +547,8 @@ namespace SellAndSwapGoodies.Server.Migrations
                         {
                             Id = 12,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 3, 21, 31, 57, 626, DateTimeKind.Local).AddTicks(7978),
-                            DateUpdated = new DateTime(2024, 2, 3, 21, 31, 57, 626, DateTimeKind.Local).AddTicks(7979),
+                            DateCreated = new DateTime(2024, 2, 4, 23, 14, 39, 317, DateTimeKind.Local).AddTicks(8071),
+                            DateUpdated = new DateTime(2024, 2, 4, 23, 14, 39, 317, DateTimeKind.Local).AddTicks(8071),
                             Name = "Luxury",
                             UpdatedBy = "System"
                         });
@@ -637,8 +637,8 @@ namespace SellAndSwapGoodies.Server.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 3, 21, 31, 57, 626, DateTimeKind.Local).AddTicks(8205),
-                            DateUpdated = new DateTime(2024, 2, 3, 21, 31, 57, 626, DateTimeKind.Local).AddTicks(8205),
+                            DateCreated = new DateTime(2024, 2, 4, 23, 14, 39, 317, DateTimeKind.Local).AddTicks(8391),
+                            DateUpdated = new DateTime(2024, 2, 4, 23, 14, 39, 317, DateTimeKind.Local).AddTicks(8392),
                             Name = "New",
                             UpdatedBy = "System"
                         },
@@ -646,8 +646,8 @@ namespace SellAndSwapGoodies.Server.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 3, 21, 31, 57, 626, DateTimeKind.Local).AddTicks(8207),
-                            DateUpdated = new DateTime(2024, 2, 3, 21, 31, 57, 626, DateTimeKind.Local).AddTicks(8207),
+                            DateCreated = new DateTime(2024, 2, 4, 23, 14, 39, 317, DateTimeKind.Local).AddTicks(8393),
+                            DateUpdated = new DateTime(2024, 2, 4, 23, 14, 39, 317, DateTimeKind.Local).AddTicks(8393),
                             Name = "Fair",
                             UpdatedBy = "System"
                         },
@@ -655,8 +655,8 @@ namespace SellAndSwapGoodies.Server.Migrations
                         {
                             Id = 3,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 3, 21, 31, 57, 626, DateTimeKind.Local).AddTicks(8209),
-                            DateUpdated = new DateTime(2024, 2, 3, 21, 31, 57, 626, DateTimeKind.Local).AddTicks(8209),
+                            DateCreated = new DateTime(2024, 2, 4, 23, 14, 39, 317, DateTimeKind.Local).AddTicks(8395),
+                            DateUpdated = new DateTime(2024, 2, 4, 23, 14, 39, 317, DateTimeKind.Local).AddTicks(8395),
                             Name = "Poor",
                             UpdatedBy = "System"
                         });
@@ -742,8 +742,8 @@ namespace SellAndSwapGoodies.Server.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 3, 21, 31, 57, 626, DateTimeKind.Local).AddTicks(7737),
-                            DateUpdated = new DateTime(2024, 2, 3, 21, 31, 57, 626, DateTimeKind.Local).AddTicks(7748),
+                            DateCreated = new DateTime(2024, 2, 4, 23, 14, 39, 317, DateTimeKind.Local).AddTicks(7809),
+                            DateUpdated = new DateTime(2024, 2, 4, 23, 14, 39, 317, DateTimeKind.Local).AddTicks(7827),
                             Status = "Shipped",
                             UpdatedBy = "System"
                         },
@@ -751,8 +751,8 @@ namespace SellAndSwapGoodies.Server.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 3, 21, 31, 57, 626, DateTimeKind.Local).AddTicks(7750),
-                            DateUpdated = new DateTime(2024, 2, 3, 21, 31, 57, 626, DateTimeKind.Local).AddTicks(7750),
+                            DateCreated = new DateTime(2024, 2, 4, 23, 14, 39, 317, DateTimeKind.Local).AddTicks(7828),
+                            DateUpdated = new DateTime(2024, 2, 4, 23, 14, 39, 317, DateTimeKind.Local).AddTicks(7828),
                             Status = "Delivered",
                             UpdatedBy = "System"
                         },
@@ -760,8 +760,8 @@ namespace SellAndSwapGoodies.Server.Migrations
                         {
                             Id = 3,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 3, 21, 31, 57, 626, DateTimeKind.Local).AddTicks(7752),
-                            DateUpdated = new DateTime(2024, 2, 3, 21, 31, 57, 626, DateTimeKind.Local).AddTicks(7752),
+                            DateCreated = new DateTime(2024, 2, 4, 23, 14, 39, 317, DateTimeKind.Local).AddTicks(7830),
+                            DateUpdated = new DateTime(2024, 2, 4, 23, 14, 39, 317, DateTimeKind.Local).AddTicks(7830),
                             Status = "Canceled",
                             UpdatedBy = "System"
                         },
@@ -769,8 +769,8 @@ namespace SellAndSwapGoodies.Server.Migrations
                         {
                             Id = 4,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 3, 21, 31, 57, 626, DateTimeKind.Local).AddTicks(7753),
-                            DateUpdated = new DateTime(2024, 2, 3, 21, 31, 57, 626, DateTimeKind.Local).AddTicks(7754),
+                            DateCreated = new DateTime(2024, 2, 4, 23, 14, 39, 317, DateTimeKind.Local).AddTicks(7831),
+                            DateUpdated = new DateTime(2024, 2, 4, 23, 14, 39, 317, DateTimeKind.Local).AddTicks(7832),
                             Status = "Pending",
                             UpdatedBy = "System"
                         });
@@ -1037,8 +1037,8 @@ namespace SellAndSwapGoodies.Server.Migrations
                             Id = 1,
                             Age = 39,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 3, 21, 31, 57, 626, DateTimeKind.Local).AddTicks(8404),
-                            DateUpdated = new DateTime(2024, 2, 3, 21, 31, 57, 626, DateTimeKind.Local).AddTicks(8405),
+                            DateCreated = new DateTime(2024, 2, 4, 23, 14, 39, 317, DateTimeKind.Local).AddTicks(8604),
+                            DateUpdated = new DateTime(2024, 2, 4, 23, 14, 39, 317, DateTimeKind.Local).AddTicks(8605),
                             EmailAddress = "James@gmail.com",
                             Gender = "Male",
                             Name = "James",
@@ -1051,8 +1051,8 @@ namespace SellAndSwapGoodies.Server.Migrations
                             Id = 2,
                             Age = 35,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2024, 2, 3, 21, 31, 57, 626, DateTimeKind.Local).AddTicks(8520),
-                            DateUpdated = new DateTime(2024, 2, 3, 21, 31, 57, 626, DateTimeKind.Local).AddTicks(8520),
+                            DateCreated = new DateTime(2024, 2, 4, 23, 14, 39, 317, DateTimeKind.Local).AddTicks(8607),
+                            DateUpdated = new DateTime(2024, 2, 4, 23, 14, 39, 317, DateTimeKind.Local).AddTicks(8608),
                             EmailAddress = "Curry@gmail.com",
                             Gender = "Male",
                             Name = "Curry",
